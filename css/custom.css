@@ -1,0 +1,18 @@
+table.comparison{
+  width:100%;
+}
+
+table.comparison th{
+  padding:6px;
+  border-bottom:1px solid black; 
+}
+
+table.comparison td{
+  padding:6px;
+  border-bottom:1px solid #ccc;
+}
+
+.reveal section img.no-border{
+  border:0px;
+  box-shadow:none;
+}

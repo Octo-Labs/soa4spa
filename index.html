@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>soa4spa</title>
+
+		<meta name="description" content="Service Oriented Architecture for Single Page Applications">
+		<meta name="author" content="Jeremy Green">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css" id="custom">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+<div class="reveal">
+
+<div class="slides">
+
+<section>
+  <h2>Service Oriented Architecture<br/><br/>for<br/><br/>Single Page Applications</h2>
+</section>
+
+<section>
+  <h2>CloudHDR</h2>
+  <br /><br />
+  <h3>HDR Photography</h3>
+</section>
+
+
+<section>
+  What is hdr?
+</section>
+
+<section>
+  History of CloudHDR
+</section>
+
+<section>
+  <ul>
+    <li>2009 Bash Scripts</li>
+    <li>2010 PictoDroid</li>
+    <li>2011 ThePhotoLabs / Phocoder</li>
+    <li>2013 CloudHDR</li>
+  </ul>
+</section>
+
+<section>
+  <img src="img/monolith.jpg" alt="" class="no-border"/>
+</section>
+
+<section>
+  <h2>PictoDroid</h2>
+  <ul>
+    <li>User Auth/Management</li>
+    <li>File Management</li>
+    <li>Processing Engine</li>
+    <li>Job Monitoring UI</li>
+    <li>Gallery Browsing</li>
+    <li>Editing UI</li>
+    <li>Set Splitter</li>
+    <li>Uploading UI</li>
+    <li>Cluster Management</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Phocoder</h2>
+  <ul>
+    <li>Processing Engine</li>
+    <li>Job Monitoring UI</li>
+    <li>Cluster Management</li>
+  </ul>
+  <br/><br />
+  <h2>ThePhotoLabs</h2>
+  <ul>
+    <li>User Auth/Management</li>
+    <li>File Management</li>
+    <li>Gallery Browsing</li>
+    <li>Editing UI</li>
+    <li>Set Splitter</li>
+    <li>Uploading UI</li>
+  </ul>
+</section>
+
+<section>
+  <img src="img/babysteps.jpg" alt="" class="no-border"/>
+</section>
+
+<section>
+  <h2>CloudHDR</h2>
+  <table width="100%">
+
+    <tr><td>cloudhdr_processing</td><td>Rails JSON API &amp; Resque</td></tr>
+    <tr><td>cloudhdr_files</td><td>Rails JSON API &amp; Resque</td></tr>
+    <tr><td>cloudhdr_director</td><td>Rails &amp; Resque</td></tr>
+
+    <tr><td>cloudhdr_uploads</td><td>Rails</td></tr>
+    
+    <tr><td>cloudhdr_users</td><td>Rails</td></tr>
+
+    
+    
+    <tr><td>cloudhdr_galleries</td><td>Rails &amp; Ember App</td></tr>
+    <tr><td>cloudhdr_editor</td><td>Ember App</td></tr>
+    <tr><td>cloudhdr_splitter</td><td>Ember App</td></tr>
+    <tr><td>cloudhdr_processing_monitor</td><td>Ember App</td></tr>
+    
+    <tr><td>cloudhdr_coming_soon</td><td>Rails</td></tr>
+  </table>
+</section>
+
+<section>
+  Projects of CloudHDR
+</section>
+
+<section>
+  Cross domain
+</section>
+
+<section>
+  SPA Authentication
+</section>
+
+<section>
+  SPA to Service
+</section>
+
+<section>
+  Service to Service
+</section>
+
+
+
+
+
+
+
+<section>
+    <h2>Thanks For Watching!</h2>
+    <div>
+        <br>
+    </div>
+    <div>Jeremy Green</div>
+    <div>jeremy@octolabs.com</div>
+    <div>
+        <br>
+    </div>
+    <div>
+        <img src="http://www.octolabs.com/assets/octologo-8d2cdf01e08427c79ef2def5b314abeb.png">
+        <br>
+    </div>
+    <div>
+        <br>
+    </div>
+    <div>
+        <a href="http://www.octolabs.com/">http://www.octolabs.com/</a>
+        <br>
+    </div>
+</section>
+
+</div>
+</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
