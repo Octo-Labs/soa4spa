@@ -109,33 +109,85 @@
 
 <section>
   <h2>CloudHDR</h2>
-  <table width="100%">
+  <h3>Everything in a separate project</h3>
+</section>
 
+<section>
+  <h3>Projects of CloudHDR</h3>
+  <table width="100%">
     <tr><td>cloudhdr_processing</td><td>Rails JSON API &amp; Resque</td></tr>
     <tr><td>cloudhdr_files</td><td>Rails JSON API &amp; Resque</td></tr>
     <tr><td>cloudhdr_director</td><td>Rails &amp; Resque</td></tr>
-
     <tr><td>cloudhdr_uploads</td><td>Rails</td></tr>
-    
     <tr><td>cloudhdr_users</td><td>Rails</td></tr>
-
-    
-    
     <tr><td>cloudhdr_galleries</td><td>Rails &amp; Ember App</td></tr>
     <tr><td>cloudhdr_editor</td><td>Ember App</td></tr>
     <tr><td>cloudhdr_splitter</td><td>Ember App</td></tr>
     <tr><td>cloudhdr_processing_monitor</td><td>Ember App</td></tr>
-    
     <tr><td>cloudhdr_coming_soon</td><td>Rails</td></tr>
   </table>
 </section>
 
 <section>
-  Projects of CloudHDR
+  <img src="img/cloudhdr.jpg" alt="CloudHDR Structure"  class="no-border"/>
+</section>
+
+<section>
+  <h1>Logging In</h1>
+  <br /><br />
+  <h3>cloudhdr_users</h3>
+  <br />
+  <pre class="fragment fade-in"><code>
+    # Gemfile
+    gem "devise"
+    gem "bootstrap-rails"
+  </code></pre>
+</section>
+
+<section>
+  <img src="img/one_job_dog.jpg" alt="" />
+  <h2 class="fragment fade-in">Well, OK.  Two jobs.</h2>
+</section>
+
+<section>
+  <h1>Two Jobs</h1>
+  <br />
+  <h3>
+  <ol>
+    <li>UI for Sign In/Up/Out</li>
+    <br />
+    <li>Auth Endpoint for Other Services</li>
+  </ol>
+  </h3>
+</section>
+
+<section>
+  <h3>Job 1 : UI for Sign In/Up/Out</h3>
+  <br />
+  <pre><code>
+    Feature: Sign Up
+    Scenario: Sucessful sign up
+      Given a user without an account
+      Given he has a valid invitation code
+      When he creates a new account with email "jeremy@octolabs.com"
+      Then he should see "Sign Out"
+
+    Feature: Sign In/Out
+    Scenario: Sucessful sign in then sign out
+      Given an existing user with email "jeremy@octolabs.com"
+      When he signs in with email "jeremy@octolabs.com"
+      Then he should see "Sign Out"
+      When he signs out
+      Then he should see "Sign In"
+  </code></pre>
 </section>
 
 <section>
   Cross domain
+</section>
+
+<section>
+  JQuery AJAX Cookie
 </section>
 
 <section>
