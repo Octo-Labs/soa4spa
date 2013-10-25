@@ -183,6 +183,69 @@
 </section>
 
 <section>
+  <img src="img/sign_in.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <h3>Job 2 : Auth Endpoint for Other Services</h3>
+  <br />
+  <pre><code>
+    Feature: External App Sign In
+    As a returning user
+    I want to login with my details
+    And be returned to an outside app
+
+    Scenario: Sucessful sign in
+      Given an existing user with email "jeremy@octolabs.com"
+      Given a registered external app
+      When he hits the external auth endpoint
+      Then he should see "Sign In"
+      When he signs in with email "jeremy@octolabs.com"
+      Then he should be redirected back to the external app
+  </code></pre>
+</section>
+
+<section>
+  <ol>
+    <li>GET http://other-app/protected</li>
+    <br />
+    <li>REDIRECT http://cloudhdr_users/auth/cloudhdr_auth/authorize</li>
+    <br />
+    <li>REDIRECT http://cloudhdr_users/users/sign_in</li>
+    <br />
+    <li>POST http://cloudhdr_users/users/sign_in</li>
+    <br />
+    <li>REDIRECT http://cloudhdr_users/auth/cloudhdr_auth/authorize</li>
+    <br />
+    <li>REDIRECT http://other-app/protected</li>
+  </ol>
+</section>
+
+<section>
+  <h3>Job 2 : Auth Endpoint for Other Services</h3>
+  <br />
+  <pre><code>
+    Feature: External App Sign In
+
+    Scenario: Token refresh (user is already signed in)
+      Given an existing and signed in user with email "jeremy@octolabs.com"
+      Given a registered external app
+      When he hits the external auth endpoint
+      Then he should be redirected back to the external app
+  </code></pre>
+</section>
+
+<section>
+  <ol>
+    <li>GET http://other-app/protected</li>
+    <br />
+    <li>REDIRECT http://cloudhdr_users/auth/cloudhdr_auth/authorize</li>
+    <br />
+    <li>REDIRECT http://other-app/protected</li>
+  </ol>
+</section>
+
+<section>
   Cross domain
 </section>
 
