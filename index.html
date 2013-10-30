@@ -114,9 +114,7 @@
   </ul>
 </section>
 
-<section>
-  <img src="img/monolith.jpg" alt="" class="no-border"/>
-</section>
+
 
 <section>
   <h2>PictoDroid</h2>
@@ -130,6 +128,19 @@
     <li>Set Splitter</li>
     <li>Uploading UI</li>
     <li>Cluster Management</li>
+  </ul>
+</section>
+
+<section>
+  <img src="img/monolith.jpg" alt="" class="no-border"/>
+</section>
+
+<section>
+  <h3>Signs of Discomfort</h3>
+  <ul>
+    <li>Long test runs</li>
+    <li>Long deploys</li>
+    <li>File tracking vs Job tracking</li>
   </ul>
 </section>
 
@@ -205,7 +216,7 @@
   <ol>
     <li>UI for Sign In/Up/Out</li>
     <br />
-    <li>Auth Endpoint for Other Services</li>
+    <li>Auth Endpoint for Other Services (OAuth2 Provider)</li>
   </ol>
   </h3>
 </section>
@@ -255,6 +266,10 @@
 </section>
 
 <section>
+  <img src="img/uploads_with_login.jpg" alt="" class="no-border"/>
+</section>
+
+<section>
   <ol>
     <li>GET http://other-app/protected</li>
     <br />
@@ -269,6 +284,7 @@
     <li>REDIRECT http://other-app/protected</li>
   </ol>
 </section>
+
 
 <section>
   <h3>Job 2 : Auth Endpoint for Other Services</h3>
@@ -285,6 +301,11 @@
 </section>
 
 <section>
+  <img src="img/uploads_login.jpg" alt="" class="no-border"/>
+</section>
+
+<!--
+<section>
   <ol>
     <li>GET http://other-app/protected</li>
     <br />
@@ -293,9 +314,75 @@
     <li>REDIRECT http://other-app/protected</li>
   </ol>
 </section>
+-->
 
 <section>
-  Cross domain
+  <h2>Using the Auth Endpoint from Another Service</h2>
+  <br />
+  <pre class="fragment fade-in"><code>
+    # Gemfile
+    gem "cloudhdr_auth" # OAuth2 Client
+  </code></pre>
+  <pre class="fragment fade-in"><code>
+  class ApplicationController < CloudhdrAuth::BaseController
+    protect_from_forgery
+  end
+  </code></pre>
+  <pre class="fragment fade-in"><code>
+  class SecretStuffController < ApplicationController
+    before_filter :login_required
+  end
+  </code></pre>
+</section>
+
+<section>
+  <h1>Cross domain issues</h1>
+</section>
+
+<section>
+  <img src="img/cors_problem.png" alt="" class="no-border"/>
+</section>
+
+
+<section>
+  <pre><code>
+    # Gemfile
+    gem "rack-cors", :require => "rack/cors"
+  </code></pre>
+  <pre><code>
+    # config/application.rb
+    config.middleware.use Rack::Cors do
+      allow do
+        origins(/http:\/\/localhost:\d*/,
+                /http:\/\/cloudhdr-\w*-octolabs\.fwd\.wf/,
+                /http:\/\/[\w-]*\.cloudhdr\.com/
+               )
+        resource '/api/v1/*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
+      end
+    end
+  </code></pre>
+</section>
+
+<section>
+  <h2>Do NOT Do This!</h2>
+  <br />
+  <pre><code>
+    # config/application.rb
+    config.middleware.use Rack::Cors do
+      allow do
+        origins('*')
+        resource '*',
+          :headers => :any,
+          :methods => [:get, :post, :put, :delete, :options]
+      end
+    end
+  </code></pre>
+  <br />
+  <h3>Learn about Cross Site Scripting!</h3>
+</section>
+
+<section>
+  Slides about XSS?
 </section>
 
 <section>
@@ -303,19 +390,47 @@
 </section>
 
 <section>
-  SPA Authentication
+  &lt; Screen shot for cookie error here &gt;
 </section>
 
 <section>
-  SPA to Service
+  <pre><code>
+  // Make sure that cookies get sent across domains
+  $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
+    options.xhrFields = { withCredentials : true };
+  });
+  </code></pre>
+</section>
+
+<section>
+  SPA Authentication / SPA to Service
+</section>
+
+<section>
+  <ol>
+    <li>Try to pull profile json from cloudhdr_files</li>
+    <li>If that fails, redirect to cloudhdr_files auth endpoint</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Another Option for Auth</h2>
+  <ol>
+    <li>Present login form inside SPA</li>
+    <li>Exchange credentials for token</li>
+    <li>Send token with all requests</li>
+  </ol>
 </section>
 
 <section>
   Service to Service
 </section>
 
-
-
+<section>
+  ApiKey Model in Provider
+  <br />
+  Consumer sends key in request
+</section>
 
 
 
