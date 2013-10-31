@@ -206,6 +206,59 @@
 </section>
 
 <section>
+  <h2>Types of Projects</h2>
+  <ul>
+    <li>User Interfaces</li>
+    <li>User Services</li>
+    <li>Internal Services</li>
+  </ul>
+  <h3>Not sure about this direction...</h3>
+</section>
+
+<section>
+  <h1>Authentication for SOA</h1>
+  <div class="fragment fade-in">
+    <img src="img/github-sign-in.png" alt="" class="no-border"/>
+    <img src="img/social_login_button_06.jpg" alt="" class="no-border"/>
+  </div>
+</section>
+
+<section>
+  <h1>OAuth2</h1>
+</section>
+
+<section>
+  <h3>OAuth2 New Website User<sup>*</sup></h3>
+  <div class="diagram">
+    browser->website: GET /
+    website--> GitHub: Some Redirects
+    Note over GitHub: User not connected
+    GitHub->browser: Allow Connection Form
+    browser->GitHub: POST Acceptance
+    Note over GitHub: More Redirects
+    GitHub-->website: He's cool
+    website->browser: 200 OK /
+  </div>
+  <p>*Oversimplified</p>
+</section>
+
+<section>
+  <h3>OAuth2 Returning Website User<sup>*</sup></h3>
+  <div class="diagram">
+    browser->website: GET /
+    website--> GitHub: Some Redirects
+    Note over GitHub: User is logged in
+    Note over GitHub: User previously connected
+    Note over GitHub: More Redirects
+    GitHub-->website: He's cool
+    website->browser: 200 OK /
+  </div>
+  <p>*Oversimplified</p>
+</section>
+
+
+
+<section>
   <h1>Logging In</h1>
   <br /><br />
   <h3>cloudhdr_users</h3>
@@ -279,6 +332,22 @@
 </section>
 
 <section>
+  <h3>Way Oversimplified</h3>
+  <div class="diagram">
+    browser->_uploads: GET /
+    _uploads--> _users: Some Redirects
+    Note over _users: User not logged in
+    _users->browser: Sign In Form
+    browser->_users: POST credentials
+    Note over _users: More Redirects
+    _users-->_uploads: He's cool
+    _uploads->browser: 200 OK /
+  </div>
+</section>
+
+
+
+<section>
   <img src="img/uploads_with_login.jpg" alt="" class="no-border"/>
 </section>
 
@@ -324,6 +393,78 @@
 
 <section>
   <img src="img/uploads_login.jpg" alt="" class="no-border"/>
+</section>
+
+
+
+
+<section>
+  <h3>Request protected page</h3>
+  <br />
+  <div class="diagram">
+    browser->_uploads: GET /
+    Note right of _uploads: Internal Redirects
+    _uploads-->browser: 302 REDIRECT _users/auth...
+  </div>
+</section>
+
+<section>
+  <h3>Land at Sign In Page</h3>
+  <br />
+  <div class="diagram">
+    browser->_uploads: GET /
+    _uploads-->browser: 302 REDIRECT ...
+    Note left of browser: Follow redir
+    browser->_users: GET /auth?return_url=...
+    Note right of _users: Internal Redirs
+    _users->browser: 200 OK - Sign In
+
+  </div>
+</section>
+
+<section>
+  <h3>Sign In and Return</h3>
+  <br />
+  <div class="diagram">
+    browser->_uploads: GET /
+    _uploads-->browser: 302 REDIRECT ...
+    browser->_users: GET /auth?return_url=...
+    _users->browser: 200 OK - Sign In
+    Note left of browser: Enter credentials
+    browser->_users: POST
+    _users-->browser: REDIRECT return_url
+  </div>
+</section>
+
+
+<section>
+  <h3>Arrive at protected content</h3>
+  <div class="diagram">
+    browser->_uploads: Previous steps omitted
+    browser->_users: POST
+    _users-->browser: 302 REDIRECT return_url
+    Note left of browser: Follow REDIRECT
+    browser->_uploads: GET /?auth=...
+    _uploads->_users: VERIFY
+    _users->_uploads: 200 OK
+    _uploads->browser: 200 OK
+  </div>
+</section>
+
+  
+<section>
+  <div class="diagram">
+    browser->_uploads: GET /
+    _uploads-->browser: 302 REDIRECT
+    Note left of browser: Follow REDIRECT
+    browser->_users: GET /auth?return_url=...
+    _users-->browser: 302 REDIRECT return_url
+    Note left of browser: Follow REDIRECT
+    browser->_uploads: GET /
+    _uploads->_users: VERIFY
+    _users->_uploads: 200 OK
+    _uploads->browser: 200 OK
+  </div>
 </section>
 
 <!--
@@ -386,6 +527,21 @@
 </section>
 
 <section>
+  <h2>Public/Open API</h2>
+  <pre><code>
+    # config/application.rb
+    config.middleware.use Rack::Cors do
+      allow do
+        origins('*')
+        resource '/api/public/v1/*',
+          :headers => :any,
+          :methods => [:get]
+      end
+    end
+  </code></pre>
+</section>
+
+<section>
   <h2>Do NOT Do This!</h2>
   <br />
   <pre><code>
@@ -408,20 +564,38 @@
 </section>
 
 <section>
-  JQuery AJAX Cookie
+  <h2>The AJAX Cookie Problem</h2>
 </section>
 
 <section>
-  &lt; Screen shot for cookie error here &gt;
+  <img src="img/cookie_error.png" alt="" class="no-border"/>
 </section>
 
 <section>
-  <pre><code>
-  // Make sure that cookies get sent across domains
+  <img src="img/json_view.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <h1>By default jQuery does not send cookies with AJAX requests.</h1>
+</section>
+
+<section>
+  <h3><code>withCredentials</code> to the rescue!</h3>
+  <br />
+  <pre class="fragment fade-in"><code>
+  // Make sure that cookies get sent with AJAX requests
   $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
     options.xhrFields = { withCredentials : true };
   });
   </code></pre>
+</section>
+
+<section>
+  <img src="img/get_user.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <img src="img/success.png" alt="" class="no-border"/>
 </section>
 
 <section>
@@ -464,7 +638,16 @@
 
 
 
-
+<section>
+  <div class="diagram">
+    A->B: Message
+    Title: Here is a title
+    A->B: Normal line
+    B-->C: Dashed line
+    C->>D: Open arrow
+    D-->>A: Dashed open arrow
+  </div>
+</section>
 
 
 
@@ -497,6 +680,11 @@
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
 
+    <script src="lib/js/jquery.min.js"></script>
+    <script src="lib/js/raphael-min.js"></script>
+    <script src="lib/js/underscore-min.js"></script>
+    <script src="lib/js/sequence-diagram-min.js"></script>
+
 		<script>
 
 			// Full list of configuration options available here:
@@ -513,6 +701,10 @@
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          //{ src: 'lib/js/raphael-min.js', async: true, condition: function() { return !!document.body.classList; } },
+          //{ src: 'lib/js/underscore-min.js', async: true, condition: function() { return !!document.body.classList; } },
+          //{ src: 'lib/js/sequence-diagram-min.js', async: true, condition: function() { return !!document.body.classList; } },
+
 					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
@@ -524,6 +716,10 @@
 			});
 
 		</script>
+
+    <script>
+      $(".diagram").sequenceDiagram({theme: 'hand'});
+    </script>
 
 	</body>
 </html>
