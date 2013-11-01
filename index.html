@@ -67,7 +67,7 @@
   <h3 class="fragment fade-in">Eyes are fantastic optical instruments</h3>
   <br /><br />
   <h3 class="fragment fade-in">Cameras aren't nearly as good</h3>
-  <h3 class="fragment fade-in">And also kind of dumb</h3>
+  <h3 class="fragment fade-in">And they're also kinda dumb</h3>
 </section>
 
 <section>
@@ -153,6 +153,8 @@
   <ul>
     <li>Long test runs</li>
     <li>Long deploys</li>
+    <li>Changes cascading into seeminly unrelated areas</li>
+    <li>Fragile/high-churn code</li>
     <li>File tracking vs Job tracking</li>
   </ul>
 </section>
@@ -178,6 +180,26 @@
 
 <section>
   <img src="img/babysteps.jpg" alt="" class="no-border"/>
+</section>
+
+<section>
+  <h2>Phocoder</h2>
+  <ul>
+    <li>Very stable</li>
+    <li>Changes infrequently</li>
+    <li>Faster test runs</li>
+    <li>Faster deploys</li>
+  </ul>
+
+  <br /><br />
+
+  <h2>ThePhotoLabs</h2>
+  <ul>
+    <li>Less stable (than Phocoder)</li>
+    <li>Frequent change</li>
+    <li>Faster test runs</li>
+    <li>Faster deploys</li>
+  </ul>
 </section>
 
 <section>
@@ -503,7 +525,36 @@
 </section>
 
 <section>
-  <img src="img/cors_problem.png" alt="" class="no-border"/>
+  <img src="img/cors_cancelled.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <img src="img/cors_problem_terminal.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <img src="img/cors_problem2.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <img src="img/coors.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <img src="img/coors_nope.png" alt="" class="no-border" width="20%"/>
+  <br />
+  <h1>CORS</h1>
+  <br />
+  <h3>Cross Origin Resource Sharing</h3>
+
+</section>
+  
+
+
+<section>
+  <h3>Allows a site to tell browsers <br /><br />
+    that it is willing to <br /><br />
+    provide content to other sites</h3>
 </section>
 
 
@@ -512,22 +563,30 @@
     # Gemfile
     gem "rack-cors", :require => "rack/cors"
   </code></pre>
-  <pre><code>
+  <pre class="fragment fade-in"><code>
     # config/application.rb
     config.middleware.use Rack::Cors do
       allow do
         origins(/http:\/\/localhost:\d*/,
-                /http:\/\/cloudhdr-\w*-octolabs\.fwd\.wf/,
+                /https:\/\/cloudhdr-\w*-octolabs\.fwd\.wf/,
                 /http:\/\/[\w-]*\.cloudhdr\.com/
                )
-        resource '/api/v1/*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
+        resource '/api/v1/*', 
+                  :headers => :any, 
+                  :methods => [:get, :post, :put, :delete, :options]
       end
     end
   </code></pre>
 </section>
 
 <section>
+  <img src="img/cors_headers.png" alt="" class="no-border"/>
+</section>
+
+
+<section>
   <h2>Public/Open API</h2>
+  <br />
   <pre><code>
     # config/application.rb
     config.middleware.use Rack::Cors do
