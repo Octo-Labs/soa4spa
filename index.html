@@ -246,7 +246,52 @@
 </section>
 
 <section>
-  <h1>OAuth2</h1>
+  <h1>OAuth(2)</h1>
+</section>
+
+<section>
+  <h3>Protected Content in the Monolith</h3>
+  <div class="diagram">
+    browser->website: GET /protected
+    website->browser: REDIRECT /sign_in
+    Note over browser: Follow REDIRECT
+    browser->website: GET /sign_in
+    website->browser: 200 OK
+  </div>
+</section>
+
+<section>
+  <img src="img/sign_in.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <h3>Protected Content with OAuth2</h3>
+  <div class="diagram">
+    browser->website: GET /protected
+    website-->browser: 200 OK /sign_in
+    Note over browser: Click "Sign in w Github"
+    browser->Github: GET github.com/confirm
+    Github->browser: 200 OK
+  </div>
+</section>
+
+<section>
+  <img src="img/github-sign-in-form.png" alt="" />
+</section>
+
+<section>
+  <h3>Protected Content with only OAuth2 (single provider)</h3>
+  <div class="diagram">
+    browser->website: GET /protected
+    website->browser: REDIRECT github.com/confirm
+    Note over browser: Follow REDIRECT
+    browser->Github: GET github.com/confirm
+    Github->browser: 200 OK
+  </div>
+</section>
+
+<section>
+  <img src="img/codepen.png" alt="" class="no-border"/>
 </section>
 
 <section>
@@ -281,7 +326,7 @@
 
 
 <section>
-  <h1>Logging In</h1>
+  <h1>Custom OAuth2 Provider</h1>
   <br /><br />
   <h3>cloudhdr_users</h3>
   <br />
@@ -292,11 +337,12 @@
   </code></pre>
 </section>
 
+<!--
 <section>
   <img src="img/one_job_dog.jpg" alt="" />
   <h2 class="fragment fade-in">Well, OK.  Two jobs.</h2>
 </section>
-
+-->
 <section>
   <h1>Two Jobs</h1>
   <br />
@@ -354,7 +400,7 @@
 </section>
 
 <section>
-  <h3>Way Oversimplified</h3>
+  <h3>This looks familiar</h3>
   <div class="diagram">
     browser->_uploads: GET /
     _uploads--> _users: Some Redirects
@@ -368,18 +414,20 @@
 </section>
 
 
-
+<!--
 <section>
   <img src="img/uploads_with_login.jpg" alt="" class="no-border"/>
 </section>
+-->
 
 <section>
-  &lt; Describe cookie process for keeping profile info updated &gt;
+  &lt; Describe cookie process for keeping profile info updated ??? &gt;
 </section>
 
 <section>
-  &lt; Switch to using `cache_key` in the cookie? &gt;
+  &lt; Switch to using `cache_key` in the cookie? ??? &gt;
 </section>
+
 
 <!--
 <section>
@@ -554,7 +602,7 @@
 <section>
   <h3>Allows a site to tell browsers <br /><br />
     that it is willing to <br /><br />
-    provide content to other sites</h3>
+    provide content/services to other sites</h3>
 </section>
 
 
@@ -667,6 +715,82 @@
     <li>If that fails, redirect to cloudhdr_files auth endpoint</li>
   </ol>
 </section>
+
+<section>
+  <pre><code>
+  var profile_url = "<%= CLOUDHDR['files'] %>/api/v1/users/me?_=";
+  profile_url += (new Date()).getTime();
+
+  $.get( profile_url )
+    .done(function(data){
+      CloudhdrUploads.currentUser = data.user;
+    })
+    .fail(function() {
+      var newLocation = "<%= CLOUDHDR['files'] %>/external_auth?return=";
+      newLocation += encodeURIComponent(document.location.toString())
+      document.location = newLocation;
+    });
+  </code></pre>
+</section>
+
+
+<section>
+  <h3>3 possible states</h3>
+  <ol>
+    <li>Not signed in at all</li>
+    <li>Signed into _users but no session on _files</li>
+    <li>Active session on _files</li>
+  </ol>
+</section>
+
+
+<section>
+  <h3>Active session on _files</h3>
+  <div class="diagram">
+    browser->_editor: GET /
+    _editor->browser: 200 OK
+    Note over browser: JS executes
+    browser->_files: GET /profile
+    _files->browser: 200 OK
+    Note over browser: App continues to load
+  </div>
+</section>
+
+
+<section>
+  <h3>Signed in, no session on _files</h3>
+  <div class="diagram">
+    participant browser
+    participant _editor
+    participant _files
+    participant _users
+    browser->_files: GET /profile
+    _files->browser: 401 Not Authorized
+    Note over browser: JS Redirect
+    browser->_files: GET /auth
+    _files-->_users: Some redirects
+    _users-->_files: He's cool
+    _files-->_editor: Try again
+  </div>
+</section>
+
+
+<section>
+  <h3>Not signed in</h3>
+  <div class="diagram">
+    participant browser
+    participant _editor
+    participant _files
+    participant _users
+    browser->_files: GET /profile
+    _files->browser: 401 Not Authorized
+    Note over browser: JS Redirect
+    browser->_files: GET /auth
+    _files-->_users: Some redirects
+    _users->browser: 200 OK /sign_in
+  </div>
+</section>
+
 
 <section>
   <h2>Another Option for Auth</h2>
