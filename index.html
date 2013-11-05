@@ -63,21 +63,26 @@
 
 <section>
   <h2>A better question : Why HDR?</h2>
+  <hr />
+  <div class="fragment fade-in">
+    <h2>You don't want this</h2>
+    <img src="img/hdr/hd_DSC_5794.jpg" alt="" width="48%"/>
+    <img src="img/hdr/hd_DSC_5798.jpg" alt="" width="48%"/>
+  </div>
+</section>
+
+<section>
+  <img src="img/hdr/hd_c_4a18eb0a-0b94-11e3-a7aa-22000a950cd1__31c2ad183cb581b57b74e778bf3fbd0e.jpg" alt="" />
+</section>
+
+<section>
+  <h2>Why HDR?</h2>
+  <hr />
   <br /><br />
   <h3 class="fragment fade-in">Eyes are fantastic optical instruments</h3>
   <br /><br />
   <h3 class="fragment fade-in">Cameras aren't nearly as good</h3>
   <h3 class="fragment fade-in">And they're also kinda dumb</h3>
-</section>
-
-<section>
-  <h2>You don't want this:</h2>
-  <img src="img/hdr/hd_DSC_5794.jpg" alt="" width="48%"/>
-  <img src="img/hdr/hd_DSC_5798.jpg" alt="" width="48%"/>
-</section>
-
-<section>
-  <img src="img/hdr/hd_c_4a18eb0a-0b94-11e3-a7aa-22000a950cd1__31c2ad183cb581b57b74e778bf3fbd0e.jpg" alt="" />
 </section>
 
 <section>
@@ -107,25 +112,27 @@
   <h3>My History with HDR Automation</h3>
   <br />
   <ul>
-    <li>2007 : Bash Scripts (PfsTools)</li>
-    <li class="fragment fade-in">2010 : PictoDroid  (PfsTools)</li>
-    <li class="fragment fade-in">2011 : ThePhotoLabs / Phocoder  (PfsTools)</li>
-    <li class="fragment fade-in">2013 : CloudHDR  (Photomatix)</li>
+    <li>Version 0 : 2007 : Bash Scripts (PfsTools)</li>
+    <li class="fragment fade-in">Version 1 : 2010 : PictoDroid  (PfsTools)</li>
+    <li class="fragment fade-in">Version 2 : 2011 : ThePhotoLabs / Phocoder  (PfsTools)</li>
+    <li class="fragment fade-in">Version 3 : 2013 : CloudHDR  (Photomatix)</li>
   </ul>
 </section>
 
 
 
 <section>
+  <h2>Version 1</h2>
+  <hr />
   <h2>PictoDroid</h2>
   <ul>
     <li>User Auth/Management</li>
     <li>File Management</li>
     <li>Processing Engine</li>
     <li>Job Monitoring UI</li>
-    <li>Gallery Browsing</li>
+    <li>Gallery Browsing UI</li>
     <li>Editing UI</li>
-    <li>Set Splitter</li>
+    <li>Set Splitter UI</li>
     <li>Uploading UI</li>
     <li>Cluster Management</li>
   </ul>
@@ -139,43 +146,64 @@
 
 <section>
   <h2>Why Do Monoliths Form?</h2>
+  <br />
   <ul>
-    <li>Inertia - New code should go with the old code</li>
+    <li>Inertia</li>
     <li>Everything *seems* related</li>
-    <li>"Easier" to on-board new devs</li>
-    <li>"Easier" to maintain</li>
-    <li>"Easier" to deploy</li>
+    <li class="fragment fade-in">It's the right way to start! (Yes, really.)</li>
+    <div class="fragment fade-in">
+      <li>Easier to on-board new devs</li>
+      <li>Easier to maintain</li>
+      <li>Easier to deploy</li>
+    </div>
   </ul>
+</section>
+
+<section>
+  <h3>Easier or "Easier"?</h3>
 </section>
 
 <section>
   <h3>Signs of Discomfort</h3>
+  <br />
   <ul>
+    <li>Bloated Gemfile</li>
+    <li>Slow console start up</li>
     <li>Long test runs</li>
     <li>Long deploys</li>
     <li>Changes cascading into seeminly unrelated areas</li>
     <li>Fragile/high-churn code</li>
-    <li>File tracking vs Job tracking</li>
+    <li>Application specific reasons</li>
   </ul>
 </section>
 
 <section>
-  <h2>Phocoder</h2>
-  <ul>
-    <li>Processing Engine</li>
-    <li>Job Monitoring UI</li>
-    <li>Cluster Management</li>
-  </ul>
-  <br/><br />
-  <h2>ThePhotoLabs</h2>
-  <ul>
-    <li>User Auth/Management</li>
-    <li>File Management</li>
-    <li>Gallery Browsing</li>
-    <li>Editing UI</li>
-    <li>Set Splitter</li>
-    <li>Uploading UI</li>
-  </ul>
+  <h2>Version 2</h2>
+  <hr />
+  <table border="0" class="fragment fade-in">
+    <tr>
+      <td width="49%">
+        <h2>Phocoder</h2>
+        <ul>
+          <li>Processing Engine</li>
+          <li>Job Monitoring UI</li>
+          <li>Cluster Management</li>
+        </ul>
+      </td>
+      <td widht="49%" class="fragment fade-in">
+        <h2>ThePhotoLabs</h2>
+        <ul>
+          <li>User Auth/Management</li>
+          <li>File Management</li>
+          <li>Gallery Browsing UI</li>
+          <li>Editing UI</li>
+          <li>Set Splitter UI</li>
+          <li>Uploading UI</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+        
 </section>
 
 <section>
@@ -183,23 +211,30 @@
 </section>
 
 <section>
-  <h2>Phocoder</h2>
-  <ul>
-    <li>Very stable</li>
-    <li>Changes infrequently</li>
-    <li>Faster test runs</li>
-    <li>Faster deploys</li>
-  </ul>
-
-  <br /><br />
-
-  <h2>ThePhotoLabs</h2>
-  <ul>
-    <li>Less stable (than Phocoder)</li>
-    <li>Frequent change</li>
-    <li>Faster test runs</li>
-    <li>Faster deploys</li>
-  </ul>
+  <h2>Version 2 Benefits</h2>
+  <hr />
+  <table border="0" class="fragment fade-in">
+    <tr>
+      <td width="49%">
+        <h2>Phocoder</h2>
+        <ul>
+          <li>Very stable</li>
+          <li>Changes infrequently</li>
+          <li>Faster test runs</li>
+          <li>Faster deploys</li>
+        </ul>
+      </td>
+      <td widht="49%" class="fragment fade-in">
+        <h2>ThePhotoLabs</h2>
+        <ul>
+          <li>Less stable (than Phocoder)</li>
+          <li>Frequent change</li>
+          <li>Faster test runs</li>
+          <li>Faster deploys</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
 </section>
 
 <section>
@@ -209,6 +244,7 @@
 
 <section>
   <h3>Projects of CloudHDR</h3>
+  <hr />
   <table width="100%">
     <tr><td>cloudhdr_processing</td><td>Rails JSON API &amp; Resque</td></tr>
     <tr><td>cloudhdr_files</td><td>Rails JSON API &amp; Resque</td></tr>
@@ -219,7 +255,6 @@
     <tr><td>cloudhdr_editor</td><td>Ember App</td></tr>
     <tr><td>cloudhdr_splitter</td><td>Ember App</td></tr>
     <tr><td>cloudhdr_processing_monitor</td><td>Ember App</td></tr>
-    <tr><td>cloudhdr_coming_soon</td><td>Rails</td></tr>
   </table>
 </section>
 
@@ -240,13 +275,25 @@
 <section>
   <h1>Authentication for SOA</h1>
   <div class="fragment fade-in">
+    <img src="img/LoginWithFacebook.png" alt="" class="no-border"/>
+    <!--
     <img src="img/github-sign-in.png" alt="" class="no-border"/>
     <img src="img/social_login_button_06.jpg" alt="" class="no-border"/>
+    -->
   </div>
 </section>
 
 <section>
+  <img src="img/troll.png" alt="" class="no-border"/>
+</section>
+
+<section>
   <h1>OAuth(2)</h1>
+</section>
+
+<section>
+  <h3>Protected Content in the Monolith</h3>
+  <img src="img/sign-in-only.png" alt="" class="fragment fade-in"/>
 </section>
 
 <section>
@@ -261,7 +308,8 @@
 </section>
 
 <section>
-  <img src="img/sign_in.png" alt="" class="no-border"/>
+  <h3>Protected Content with OAuth2</h3>
+  <img src="img/github-sign-in-form.png" alt="" class="fragment fade-in"/>
 </section>
 
 <section>
@@ -275,12 +323,16 @@
   </div>
 </section>
 
-<section>
-  <img src="img/github-sign-in-form.png" alt="" />
-</section>
 
 <section>
-  <h3>Protected Content with only OAuth2 (single provider)</h3>
+  <h3>Protected Content with only OAuth2</h3>
+  <h3>No 'local' sign in page</h3>
+  <img src="img/codepen.png" alt="" class="no-border fragment fade-in"/>
+</section>
+
+
+<section>
+  <h3>Protected Content with only OAuth2</h3>
   <div class="diagram">
     browser->website: GET /protected
     website->browser: REDIRECT github.com/confirm
@@ -290,38 +342,24 @@
   </div>
 </section>
 
-<section>
-  <img src="img/codepen.png" alt="" class="no-border"/>
-</section>
 
+<!--
 <section>
   <h3>OAuth2 New Website User<sup>*</sup></h3>
   <div class="diagram">
     browser->website: GET /
-    website--> GitHub: Some Redirects
+    website- -> GitHub: Some Redirects
     Note over GitHub: User not connected
     GitHub->browser: Allow Connection Form
     browser->GitHub: POST Acceptance
     Note over GitHub: More Redirects
-    GitHub-->website: He's cool
+    GitHub- ->website: He's cool
     website->browser: 200 OK /
   </div>
   <p>*Oversimplified</p>
 </section>
+-->
 
-<section>
-  <h3>OAuth2 Returning Website User<sup>*</sup></h3>
-  <div class="diagram">
-    browser->website: GET /
-    website--> GitHub: Some Redirects
-    Note over GitHub: User is logged in
-    Note over GitHub: User previously connected
-    Note over GitHub: More Redirects
-    GitHub-->website: He's cool
-    website->browser: 200 OK /
-  </div>
-  <p>*Oversimplified</p>
-</section>
 
 
 
@@ -350,7 +388,7 @@
   <ol>
     <li>UI for Sign In/Up/Out</li>
     <br />
-    <li>Auth Endpoint for Other Services (OAuth2 Provider)</li>
+    <li>OAuth2 Provider for Other Services</li>
   </ol>
   </h3>
 </section>
@@ -385,10 +423,6 @@
   <br />
   <pre><code>
     Feature: External App Sign In
-    As a returning user
-    I want to login with my details
-    And be returned to an outside app
-
     Scenario: Sucessful sign in
       Given an existing user with email "jeremy@octolabs.com"
       Given a registered external app
@@ -413,7 +447,108 @@
   </div>
 </section>
 
+<section>
+  <h3>Job 2 : Auth Endpoint for Other Services</h3>
+  <br />
+  <pre><code>
+    Feature: External App Sign In
 
+    Scenario: Token refresh (user is already signed in)
+      Given an existing and signed in user with email "jeremy@octolabs.com"
+      Given a registered external app
+      When he hits the external auth endpoint
+      Then he should be redirected back to the external app
+  </code></pre>
+</section>
+
+<section>
+  <h3>Already logged in</h3>
+  <div class="diagram">
+    browser->_uploads: GET /
+    _uploads--> _users: Some Redirects
+    Note over _users: User is logged in
+    Note over _users: More Redirects
+    _users-->_uploads: He's cool
+    _uploads->browser: 200 OK /
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>That's it for cloudhdr_users</h2>
+    <h5>(down for more sequence diagrams)</h5>
+  </section>
+  
+
+  <section>
+    <h3>Request protected page</h3>
+    <br />
+    <div class="diagram">
+      browser->_uploads: GET /
+      Note right of _uploads: Internal Redirects
+      _uploads-->browser: 302 REDIRECT _users/auth...
+    </div>
+  </section>
+
+  <section>
+    <h3>Land at Sign In Page</h3>
+    <br />
+    <div class="diagram">
+      browser->_uploads: GET /
+      _uploads-->browser: 302 REDIRECT ...
+      Note left of browser: Follow redir
+      browser->_users: GET /auth?return_url=...
+      Note right of _users: Internal Redirs
+      _users->browser: 200 OK - Sign In
+
+    </div>
+  </section>
+
+  <section>
+    <h3>Sign In and Return</h3>
+    <br />
+    <div class="diagram">
+      browser->_uploads: GET /
+      _uploads-->browser: 302 REDIRECT ...
+      browser->_users: GET /auth?return_url=...
+      _users->browser: 200 OK - Sign In
+      Note left of browser: Enter credentials
+      browser->_users: POST
+      _users-->browser: REDIRECT return_url
+    </div>
+  </section>
+
+
+  <section>
+    <h3>Arrive at protected content</h3>
+    <div class="diagram">
+      browser->_uploads: Previous steps omitted
+      browser->_users: POST
+      _users-->browser: 302 REDIRECT return_url
+      Note left of browser: Follow REDIRECT
+      browser->_uploads: GET /?auth=...
+      _uploads->_users: VERIFY
+      _users->_uploads: 200 OK
+      _uploads->browser: 200 OK
+    </div>
+  </section>
+
+    
+  <section>
+    <div class="diagram">
+      browser->_uploads: GET /
+      _uploads-->browser: 302 REDIRECT
+      Note left of browser: Follow REDIRECT
+      browser->_users: GET /auth?return_url=...
+      _users-->browser: 302 REDIRECT return_url
+      Note left of browser: Follow REDIRECT
+      browser->_uploads: GET /
+      _uploads->_users: VERIFY
+      _users->_uploads: 200 OK
+      _uploads->browser: 200 OK
+    </div>
+  </section>
+</section>
 <!--
 <section>
   <img src="img/uploads_with_login.jpg" alt="" class="no-border"/>
@@ -447,95 +582,15 @@
 </section>
 -->
 
-<section>
-  <h3>Job 2 : Auth Endpoint for Other Services</h3>
-  <br />
-  <pre><code>
-    Feature: External App Sign In
-
-    Scenario: Token refresh (user is already signed in)
-      Given an existing and signed in user with email "jeremy@octolabs.com"
-      Given a registered external app
-      When he hits the external auth endpoint
-      Then he should be redirected back to the external app
-  </code></pre>
-</section>
-
+<!--
 <section>
   <img src="img/uploads_login.jpg" alt="" class="no-border"/>
 </section>
+-->
 
 
 
 
-<section>
-  <h3>Request protected page</h3>
-  <br />
-  <div class="diagram">
-    browser->_uploads: GET /
-    Note right of _uploads: Internal Redirects
-    _uploads-->browser: 302 REDIRECT _users/auth...
-  </div>
-</section>
-
-<section>
-  <h3>Land at Sign In Page</h3>
-  <br />
-  <div class="diagram">
-    browser->_uploads: GET /
-    _uploads-->browser: 302 REDIRECT ...
-    Note left of browser: Follow redir
-    browser->_users: GET /auth?return_url=...
-    Note right of _users: Internal Redirs
-    _users->browser: 200 OK - Sign In
-
-  </div>
-</section>
-
-<section>
-  <h3>Sign In and Return</h3>
-  <br />
-  <div class="diagram">
-    browser->_uploads: GET /
-    _uploads-->browser: 302 REDIRECT ...
-    browser->_users: GET /auth?return_url=...
-    _users->browser: 200 OK - Sign In
-    Note left of browser: Enter credentials
-    browser->_users: POST
-    _users-->browser: REDIRECT return_url
-  </div>
-</section>
-
-
-<section>
-  <h3>Arrive at protected content</h3>
-  <div class="diagram">
-    browser->_uploads: Previous steps omitted
-    browser->_users: POST
-    _users-->browser: 302 REDIRECT return_url
-    Note left of browser: Follow REDIRECT
-    browser->_uploads: GET /?auth=...
-    _uploads->_users: VERIFY
-    _users->_uploads: 200 OK
-    _uploads->browser: 200 OK
-  </div>
-</section>
-
-  
-<section>
-  <div class="diagram">
-    browser->_uploads: GET /
-    _uploads-->browser: 302 REDIRECT
-    Note left of browser: Follow REDIRECT
-    browser->_users: GET /auth?return_url=...
-    _users-->browser: 302 REDIRECT return_url
-    Note left of browser: Follow REDIRECT
-    browser->_uploads: GET /
-    _uploads->_users: VERIFY
-    _users->_uploads: 200 OK
-    _uploads->browser: 200 OK
-  </div>
-</section>
 
 <!--
 <section>
@@ -569,7 +624,146 @@
 </section>
 
 <section>
-  <h1>Cross domain issues</h1>
+  <h2>Two 'types' of sessions</h2>
+  <ul>
+    <li>cloudhdr_users : Signed In</li>
+    <li>cloudhdr_* : Having a session</li>
+  </ul>
+</section>
+
+
+
+
+<section>
+  SPA Authentication / SPA to Service
+</section>
+
+<section>
+  <h3>The _editor Ember app  <br /><br />running in the browser <br /><br /> talks directly to _files</h3>
+</section>
+
+<section>
+  <h2>Initial SPA Loading Sequence</h2>
+  <hr />
+  <ol>
+    <li class="fragment fade-in">Browser loads page/JS from cloudhdr_editor</li>
+    <li class="fragment fade-in">JS function tries to pull profile json from cloudhdr_files</li>
+    <li class="fragment fade-in">If that fails, redirect to cloudhdr_files auth endpoint</li>
+    <!--<li class="fragment fade-in">cloudhdr_files will redirect to cloudhdr_users</li>-->
+    <li class="fragment fade-in">OAuth2 happens</li>
+    <li class="fragment fade-in">Browser is redirected to cloudhdr_editor</li>
+    <li class="fragment fade-in">JS function tries to pull profile json from cloudhdr_files</li>
+    <li class="fragment fade-in">If that works the Ember app loads</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Initial SPA Loading Sequence</h2>
+  <hr />
+  <pre><code>
+  var profile_url = "<%= CLOUDHDR['files'] %>/api/v1/users/me?_=";
+  profile_url += (new Date()).getTime();
+
+  $.get( profile_url )
+    .done(function(data){
+      CloudhdrEditor.currentUser = data.user;
+      CloudhdrEditor.createEmberApp();
+    })
+    .fail(function() {
+      var newLocation = "<%= CLOUDHDR['files'] %>/external_auth?return=";
+      newLocation += encodeURIComponent(document.location.toString())
+      document.location = newLocation;
+    });
+  </code></pre>
+</section>
+
+
+<section>
+  <h3>3 possible states</h3>
+  <ol>
+    <li>Not signed in at all</li>
+    <li>Signed in to _users but no session on _files</li>
+    <li>Active session on _files</li>
+  </ol>
+</section>
+
+
+<section>
+  <h3>Active session on _files</h3>
+  <div class="diagram">
+    browser->_editor: GET /
+    _editor->browser: 200 OK
+    Note over browser: JS executes
+    browser->_files: GET /profile
+    _files->browser: 200 OK
+    Note over browser: App continues to load
+  </div>
+</section>
+
+
+<section>
+  <h3>Signed in, no session on _files</h3>
+  <div class="diagram">
+    participant browser
+    participant _editor
+    participant _files
+    participant _users
+    browser->_files: GET /profile
+    _files->browser: 401 Not Authorized
+    Note over browser: JS Redirect
+    browser->_files: GET /auth
+    _files-->_users: Some redirects
+    _users-->_files: He's cool
+    _files-->_editor: Try again
+  </div>
+</section>
+
+
+<section>
+  <h3>Not signed in</h3>
+  <div class="diagram">
+    participant browser
+    participant _editor
+    participant _files
+    participant _users
+    browser->_files: GET /profile
+    _files->browser: 401 Not Authorized
+    Note over browser: JS Redirect
+    browser->_files: GET /auth
+    _files-->_users: Some redirects
+    _users->browser: 200 OK /sign_in
+  </div>
+</section>
+
+
+<section>
+  <h2>Another Option for Auth</h2>
+  <ol>
+    <li>Present login form inside SPA</li>
+    <li>Exchange credentials for token</li>
+    <li>Send token with all requests</li>
+  </ol>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+  <h2>Cross domain issues</h2>
+  <br /><br />
+  <h4>OR</h4>
+  <br /><br />
+  <h2>Leaving localhost</h2>
 </section>
 
 <section>
@@ -683,7 +877,7 @@
 </section>
 
 <section>
-  <h1>By default jQuery does not send cookies with AJAX requests.</h1>
+  <h1>By default jQuery does not send cookies with AJAX requests</h1>
 </section>
 
 <section>
@@ -705,101 +899,7 @@
   <img src="img/success.png" alt="" class="no-border"/>
 </section>
 
-<section>
-  SPA Authentication / SPA to Service
-</section>
 
-<section>
-  <ol>
-    <li>Try to pull profile json from cloudhdr_files</li>
-    <li>If that fails, redirect to cloudhdr_files auth endpoint</li>
-  </ol>
-</section>
-
-<section>
-  <pre><code>
-  var profile_url = "<%= CLOUDHDR['files'] %>/api/v1/users/me?_=";
-  profile_url += (new Date()).getTime();
-
-  $.get( profile_url )
-    .done(function(data){
-      CloudhdrUploads.currentUser = data.user;
-    })
-    .fail(function() {
-      var newLocation = "<%= CLOUDHDR['files'] %>/external_auth?return=";
-      newLocation += encodeURIComponent(document.location.toString())
-      document.location = newLocation;
-    });
-  </code></pre>
-</section>
-
-
-<section>
-  <h3>3 possible states</h3>
-  <ol>
-    <li>Not signed in at all</li>
-    <li>Signed into _users but no session on _files</li>
-    <li>Active session on _files</li>
-  </ol>
-</section>
-
-
-<section>
-  <h3>Active session on _files</h3>
-  <div class="diagram">
-    browser->_editor: GET /
-    _editor->browser: 200 OK
-    Note over browser: JS executes
-    browser->_files: GET /profile
-    _files->browser: 200 OK
-    Note over browser: App continues to load
-  </div>
-</section>
-
-
-<section>
-  <h3>Signed in, no session on _files</h3>
-  <div class="diagram">
-    participant browser
-    participant _editor
-    participant _files
-    participant _users
-    browser->_files: GET /profile
-    _files->browser: 401 Not Authorized
-    Note over browser: JS Redirect
-    browser->_files: GET /auth
-    _files-->_users: Some redirects
-    _users-->_files: He's cool
-    _files-->_editor: Try again
-  </div>
-</section>
-
-
-<section>
-  <h3>Not signed in</h3>
-  <div class="diagram">
-    participant browser
-    participant _editor
-    participant _files
-    participant _users
-    browser->_files: GET /profile
-    _files->browser: 401 Not Authorized
-    Note over browser: JS Redirect
-    browser->_files: GET /auth
-    _files-->_users: Some redirects
-    _users->browser: 200 OK /sign_in
-  </div>
-</section>
-
-
-<section>
-  <h2>Another Option for Auth</h2>
-  <ol>
-    <li>Present login form inside SPA</li>
-    <li>Exchange credentials for token</li>
-    <li>Send token with all requests</li>
-  </ol>
-</section>
 
 <section>
   Service to Service
@@ -822,19 +922,6 @@
 
 
 <section>
-  <div class="diagram">
-    A->B: Message
-    Title: Here is a title
-    A->B: Normal line
-    B-->C: Dashed line
-    C->>D: Open arrow
-    D-->>A: Dashed open arrow
-  </div>
-</section>
-
-
-
-<section>
     <h2>Thanks For Watching!</h2>
     <div>
         <br>
@@ -845,7 +932,7 @@
         <br>
     </div>
     <div>
-        <img src="http://www.octolabs.com/assets/octologo-8d2cdf01e08427c79ef2def5b314abeb.png">
+        <img src="http://www.octolabs.com/assets/octologo-8d2cdf01e08427c79ef2def5b314abeb.png" class="no-border">
         <br>
     </div>
     <div>
