@@ -52,6 +52,9 @@
   <h3>In the Cloud<sup>*</sup></h3>
   <br /><br />
   <h5 class="fragment fade-in"><sup>*</sup> Obligatory Buzzword</h5>
+  <aside class="notes">
+    These are some speaker notes...
+  </aside>
 </section>
 
 
@@ -83,6 +86,10 @@
   <br /><br />
   <h3 class="fragment fade-in">Cameras aren't nearly as good</h3>
   <h3 class="fragment fade-in">And they're also kinda dumb</h3>
+  <aside class="notes">
+    *At end of slide*<br />
+    Now we can get back to : What is HDR?
+  </aside>
 </section>
 
 <section>
@@ -161,6 +168,9 @@
 
 <section>
   <h3>Easier or "Easier"?</h3>
+  <aside class="notes">
+    Typical project setup : Postgres, Elastic Search, Redis, ImageMagic, Sidekiq, Memcached, Misc API keys, etc...
+  </aside>
 </section>
 
 <section>
@@ -208,10 +218,13 @@
 
 <section>
   <img src="img/babysteps.jpg" alt="" class="no-border"/>
+  <aside class="notes">
+    Things are starting to get slightly less jumbled.
+  </aside>
 </section>
 
 <section>
-  <h2>Version 2 Benefits</h2>
+  <h2>Lessons from Version 2</h2>
   <hr />
   <table border="0" class="fragment fade-in">
     <tr>
@@ -235,11 +248,15 @@
       </td>
     </tr>
   </table>
+
 </section>
 
 <section>
   <h2>CloudHDR</h2>
   <h3>Everything in a separate project</h3>
+  <aside class="notes">
+    "I decided to dive into the deep end of the rabbit hole."
+  </aside>
 </section>
 
 <section>
@@ -263,14 +280,68 @@
 </section>
 
 <section>
-  <h2>Types of Projects</h2>
+  <h2>Roles of Projects</h2>
   <ul>
-    <li>User Interfaces</li>
-    <li>User Services</li>
-    <li>Internal Services</li>
+    <li>Central Services</li>
+    <li>Service Interfaces</li>
   </ul>
-  <h3>Not sure about this direction...</h3>
 </section>
+
+<section>
+  <h3>Central Services</h3>
+  <ul>
+    <li>_users</li>
+    <li>_files</li>
+    <li>_processing</li>
+    <li>_director</li>
+  </ul>
+  <h3>Service Interfaces</h3>
+  <ul>
+    <li>_editor</li>
+    <li>_splitter</li>
+    <li>_processing_monitor</li>
+    <li>_uploads</li>
+    <li>_galleries</li>
+  </ul>
+</section>
+
+
+<section>
+  <h2>Technology of Projects</h2>
+  <ul>
+    <li>Traditional Rails</li>
+    <li>Rails JSON API</li>
+    <li>Ember</li>
+    <li class="fragment fade-in">Traditional Rails + Ember</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Traditional Rails</h3>
+  <ul>
+    <li>_users</li>
+    <li>_uploads</li>
+    <li>_director</li>
+  </ul>
+  <h3>Rails JSON API</h3>
+  <ul>
+    <li>_files</li>
+    <li>_processing</li>
+  </ul>
+  <h3>Ember</h3>
+  <ul>
+    <li>_editor</li>
+    <li>_splitter</li>
+    <li>_processing_monitor</li>
+  </ul>
+  <h3>Traditional Rails + Ember</h3>
+  <ul>
+    <li>_galleries</li>
+  </ul>
+</section>
+
+
+
 
 <section>
   <h1>Authentication for SOA</h1>
@@ -364,7 +435,7 @@
 
 
 <section>
-  <h1>Custom OAuth2 Provider</h1>
+  <h2>Custom OAuth2 Provider</h2>
   <br /><br />
   <h3>cloudhdr_users</h3>
   <br />
@@ -679,12 +750,16 @@
 
 
 <section>
+<section>
   <h3>3 possible states</h3>
   <ol>
     <li>Not signed in at all</li>
     <li>Signed in to _users but no session on _files</li>
     <li>Active session on _files</li>
   </ol>
+  <aside class="notes">
+    <h2>Don't forget the sequence diagrams below!</h2>
+  </aside>
 </section>
 
 
@@ -734,6 +809,7 @@
     _users->browser: 200 OK /sign_in
   </div>
 </section>
+</section>
 
 
 <section>
@@ -759,11 +835,9 @@
 
 
 <section>
-  <h2>Cross domain issues</h2>
-  <br /><br />
-  <h4>OR</h4>
-  <br /><br />
-  <h2>Leaving localhost</h2>
+  <h2>Leaving <code>localhost</code></h2>
+  <br />
+  <h3 class="fragment fade-in">Cross domain issues</h3>
 </section>
 
 <section>
@@ -776,6 +850,9 @@
 
 <section>
   <img src="img/cors_problem2.png" alt="" class="no-border"/>
+  <aside class="notes">
+    Luckily there is a tool that we can use to fix this problem.
+  </aside>
 </section>
 
 <section>
@@ -860,12 +937,15 @@
   <h3>Learn about Cross Site Scripting!</h3>
 </section>
 
+<!--
 <section>
   Slides about XSS?
 </section>
+-->
 
 <section>
   <h2>The AJAX Cookie Problem</h2>
+  <img src="img/cookie.jpg" alt="" />
 </section>
 
 <section>
