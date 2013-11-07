@@ -38,11 +38,23 @@
 <div class="slides">
 
 <section>
+  <h1>Hey, JAG!  Fix the fonts!</h1>
+</section>
+
+<section>
   <h3>Service Oriented Architecture<br/>for<br/>Single Page Applications</h3>
   <br />
-  <h2>OR</h2>
-  <br />
-  <h3>Stumbling Towards SOA <br />The Story of CloudHDR</h3>
+  <div class="fragment fade-in">
+    <h5>OR</h5>
+    <br />
+    <h3>Stumbling Towards SOA <br /><br />The Story of CloudHDR</h3>
+  </div>
+  <aside class="notes">
+    *show next fragment*
+    These are things that are working for me.<br />
+    There is no spec for SOA. It's not something you just implement.<br />
+    SOA is a high level decision.  System architecture/design.
+  </aside>
 </section>
 
 <section>
@@ -53,7 +65,7 @@
   <br /><br />
   <h5 class="fragment fade-in"><sup>*</sup> Obligatory Buzzword</h5>
   <aside class="notes">
-    These are some speaker notes...
+    This info is not helpful, unless you know about this small niche.
   </aside>
 </section>
 
@@ -116,14 +128,61 @@
 </section>
 
 <section>
+  
+
+  <table border="0" class="vert-middle" width="100%">
+    <tr>
+      <td colspan="2">
+        <h3>A bit about me</h3>
+        <hr />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <br />
+        <h3>Jeremy Green</h3>
+        <h4>drummer, coder, entrepreneur, photographer, brewer</h4>
+        <h4 class="fragment fade-in">okc dev community enthusiast - okcruby.org, okcjs.org</h4>
+      </td>
+    </tr>
+    <tr class="fragment fade-in">
+      <td>
+        <img src="http://www.octolabs.com/assets/octologo-8d2cdf01e08427c79ef2def5b314abeb.png" class="no-border">
+      </td>
+      <td>
+        @jagthedrummer <br />
+        jeremy@octolabs.com <br />
+        <a href="http://www.octolabs.com/">http://www.octolabs.com/</a>
+      </td>
+    </tr>
+  </table>
+  <aside class="notes">
+    These items are in chronological order.<br />
+    I've been drumming much more than half my life.<br />
+    Coding, just about half.<br />
+    * next fragment * <br />
+    Thanks to Jesse and Vance of okcjs for organizing Thunder Plains.
+    * next fragment * <br />
+    I'm historically bad at Twitter, but trying to get better.<br />
+    Contacting me through OctoLabs is more reliable.
+  </aside>
+</section>
+
+<section class="left">
   <h3>My History with HDR Automation</h3>
-  <br />
+  <hr /><br />
   <ul>
     <li>Version 0 : 2007 : Bash Scripts (PfsTools)</li>
     <li class="fragment fade-in">Version 1 : 2010 : PictoDroid  (PfsTools)</li>
     <li class="fragment fade-in">Version 2 : 2011 : ThePhotoLabs / Phocoder  (PfsTools)</li>
     <li class="fragment fade-in">Version 3 : 2013 : CloudHDR  (Photomatix)</li>
   </ul>
+  <aside class="notes">
+    Version 1 - Proof of concept. Let's try to speed things up with EC2.<br />
+    Version 2 - Add some polish, learn about SOA. Gather feedback.<br />
+    Version 3 - Use the tools that most HDR photogs use. (HdrSoft)<br />
+    For this discussion we don't care about version 0.
+  </aside>
 </section>
 
 
@@ -164,10 +223,16 @@
       <li>Easier to deploy</li>
     </div>
   </ul>
+  <aside class="notes">
+    Inertia - New code goes with the old code, right?<br />
+    Everything related - Hard to find dividing lines in a new system/domain.<br />
+    It's the right way to start. - Yep.<br />
+    Some things seem "easier".
+  </aside>
 </section>
 
 <section>
-  <h3>Easier or "Easier"?</h3>
+  <h2>Easier or "Easier"?</h2>
   <aside class="notes">
     Typical project setup : Postgres, Elastic Search, Redis, ImageMagic, Sidekiq, Memcached, Misc API keys, etc...
   </aside>
@@ -178,11 +243,12 @@
   <br />
   <ul>
     <li>Bloated Gemfile</li>
-    <li>Slow console start up</li>
+    <li>Slow server/console start up</li>
     <li>Long test runs</li>
     <li>Long deploys</li>
     <li>Changes cascading into seeminly unrelated areas</li>
     <li>Fragile/high-churn code</li>
+    <li>Hard to on-board new devs</li>
     <li>Application specific reasons</li>
   </ul>
 </section>
@@ -213,7 +279,10 @@
       </td>
     </tr>
   </table>
-        
+  <aside class="notes">
+    Phocoder - Everything about processing jobs/files.<br />
+    ThePhotoLabs - Everything else.
+  </aside>
 </section>
 
 <section>
@@ -225,7 +294,7 @@
 
 <section>
   <h2>Lessons from Version 2</h2>
-  <hr />
+  <hr /><br />
   <table border="0" class="fragment fade-in">
     <tr>
       <td width="49%">
@@ -248,7 +317,12 @@
       </td>
     </tr>
   </table>
-
+  <div class="fragment fade-in">
+    <br /><hr />
+    <ul>
+      <li>Integration between services can be... challenging</li>
+    </ul>
+  </div>
 </section>
 
 <section>
@@ -288,21 +362,29 @@
 </section>
 
 <section>
-  <h3>Central Services</h3>
-  <ul>
-    <li>_users</li>
-    <li>_files</li>
-    <li>_processing</li>
-    <li>_director</li>
-  </ul>
-  <h3>Service Interfaces</h3>
-  <ul>
-    <li>_editor</li>
-    <li>_splitter</li>
-    <li>_processing_monitor</li>
-    <li>_uploads</li>
-    <li>_galleries</li>
-  </ul>
+  <table border="0">
+    <tr>
+      <td width="49%">
+        <h3>Central Services</h3>
+        <ul>
+          <li>_users</li>
+          <li>_files</li>
+          <li>_processing</li>
+          <li>_director</li>
+        </ul>
+      </td>
+      <td width="49%">
+        <h3>Service Interfaces</h3>
+        <ul>
+          <li>_editor</li>
+          <li>_splitter</li>
+          <li>_processing_monitor</li>
+          <li>_uploads</li>
+          <li>_galleries</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
 </section>
 
 
@@ -317,27 +399,42 @@
 </section>
 
 <section>
-  <h3>Traditional Rails</h3>
-  <ul>
-    <li>_users</li>
-    <li>_uploads</li>
-    <li>_director</li>
-  </ul>
-  <h3>Rails JSON API</h3>
-  <ul>
-    <li>_files</li>
-    <li>_processing</li>
-  </ul>
-  <h3>Ember</h3>
-  <ul>
-    <li>_editor</li>
-    <li>_splitter</li>
-    <li>_processing_monitor</li>
-  </ul>
-  <h3>Traditional Rails + Ember</h3>
-  <ul>
-    <li>_galleries</li>
-  </ul>
+  <table border="0">
+    <tr>
+      <td width="49%">
+        <h3>Traditional Rails</h3>
+        <ul>
+          <li>_users</li>
+          <li>_uploads</li>
+          <li>_director</li>
+        </ul>
+        <br /><br />
+      </td>
+      <td width="49%">
+        <h3>Rails JSON API</h3>
+        <ul>
+          <li>_files</li>
+          <li>_processing</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3>Ember</h3>
+        <ul>
+          <li>_editor</li>
+          <li>_splitter</li>
+          <li>_processing_monitor</li>
+        </ul>
+      </td>
+      <td>
+        <h3>Traditional Rails + Ember</h3>
+        <ul>
+          <li>_galleries</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
 </section>
 
 
@@ -626,6 +723,7 @@
 </section>
 -->
 
+<!--
 <section>
   &lt; Describe cookie process for keeping profile info updated ??? &gt;
 </section>
@@ -633,7 +731,7 @@
 <section>
   &lt; Switch to using `cache_key` in the cookie? ??? &gt;
 </section>
-
+-->
 
 <!--
 <section>
@@ -980,7 +1078,7 @@
 </section>
 
 
-
+<!--
 <section>
   Service to Service
 </section>
@@ -990,13 +1088,14 @@
   <br />
   Consumer sends key in request
 </section>
-
+-->
 
 <section>
-  <h3>Maintenance Patterns</h3>
-  (API services are stable)
+  <h2>Maintenance Patterns</h2>
   <br />
-  (UI apps are volatile)
+  <h3>Central services are stable</h3>
+  <br />
+  <h3>Service interfaces are volatile</h3>
 </section>
 
 
@@ -1007,6 +1106,9 @@
         <br>
     </div>
     <div>Jeremy Green</div>
+    <div>
+      @jagthedrummer
+    </div>
     <div>jeremy@octolabs.com</div>
     <div>
         <br>

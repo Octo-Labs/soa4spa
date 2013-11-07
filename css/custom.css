@@ -16,3 +16,8 @@ table.comparison td{
   border:0px;
   box-shadow:none;
 }
+
+table.vert-middle td{
+  vertical-align:middle;
+}
+
