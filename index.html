@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>soa4spa</title>
+
+		<meta name="description" content="Service Oriented Architecture for Single Page Applications">
+		<meta name="author" content="Jeremy Green">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css" id="custom">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+<div class="reveal">
+
+<div class="slides">
+
+
+<section>
+  <h3>Service Oriented Architecture<br/>for<br/>Single Page Applications</h3>
+  <br /><br />
+  <div class="fragment fade-in">
+    <h5>OR</h5>
+    <br /><br />
+    <h3>Stumbling Towards SOA <br /><br />The Story of CloudHDR</h3>
+  </div>
+  <aside class="notes">
+    *show next fragment*
+    These are things that are working for me.<br />
+    There is no spec for SOA. It's not something you just implement.<br />
+    SOA is a high level decision.  System architecture/design.
+  </aside>
+</section>
+
+<section>
+  <h2>CloudHDR</h2>
+  <br /><br />
+  <h3>HDR Photo Processing Automation</h3>
+  <h3>In the Cloud<sup>*</sup></h3>
+  <br /><br />
+  <h5 class="fragment fade-in"><sup>*</sup> Obligatory Buzzword</h5>
+  <aside class="notes">
+    This info is not helpful, unless you know about this small niche.
+  </aside>
+</section>
+
+
+<section>
+  <h2>What is HDR Photography?</h2>
+  <hr /><br />
+  <h3 class="fragment fade-in">HDR == High Dynamic Range</h3>
+</section>
+
+<section>
+  <h2>A better question : Why HDR?</h2>
+  <hr />
+  <br />
+  <div class="fragment fade-in">
+    <h2>You don't want this</h2>
+    <img src="img/hdr/hd_DSC_5794.jpg" alt="" width="48%"/>
+    <img src="img/hdr/hd_DSC_5798.jpg" alt="" width="48%"/>
+  </div>
+</section>
+
+<section>
+  <img src="img/hdr/hd_c_4a18eb0a-0b94-11e3-a7aa-22000a950cd1__31c2ad183cb581b57b74e778bf3fbd0e.jpg" alt="" />
+</section>
+
+<section>
+  <h2>Why HDR?</h2>
+  <hr />
+  <br /><br />
+  <h3 class="fragment fade-in">Eyes are fantastic optical instruments</h3>
+  <br /><br />
+  <h3 class="fragment fade-in">Cameras aren't nearly as good</h3>
+  <h3 class="fragment fade-in">And they're also kinda dumb</h3>
+  <aside class="notes">
+    *At end of slide*<br />
+    Now we can get back to : What is HDR?
+  </aside>
+</section>
+
+<section>
+  <div>
+    <img src="img/hdr/hd_DSC_5794.jpg" alt="" width="18%"/>
+    <img src="img/hdr/hd_DSC_5795.jpg" alt="" width="18%"/>
+    <img src="img/hdr/hd_DSC_5796.jpg" alt="" width="18%"/>
+    <img src="img/hdr/hd_DSC_5797.jpg" alt="" width="18%"/>
+    <img src="img/hdr/hd_DSC_5798.jpg" alt="" width="18%"/>
+  </div>
+  <div>
+    <img src="img/hdr_arrow.jpg" alt="" class="no-border" width="15%"/>
+  </div>
+  <div>
+    <img src="img/hdr/hd_c_4a18eb0a-0b94-11e3-a7aa-22000a950cd1__31c2ad183cb581b57b74e778bf3fbd0e.jpg" alt="" width="40%"/>
+  </div>
+</section>
+
+<section>
+  <img src="img/hdr_step1_2.png" alt="" class="no-border"/>
+  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+  <img src="img/hdr_step2_2.png" alt="" class="no-border fragment fade-in"/>
+  <img src="img/hdr/composite.png" alt="" class="no-border fragment fade-in"/>
+</section>
+
+<section>
+  
+
+  <table border="0" class="vert-middle" width="100%">
+    <tr>
+      <td colspan="2">
+        <h3>A bit about me</h3>
+        <hr />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <br />
+        <h3>Jeremy Green</h3>
+        <h4>drummer, coder, entrepreneur, photographer, brewer</h4>
+        <h4 class="fragment fade-in">okc dev community enthusiast - okcruby.org, okcjs.org</h4>
+      </td>
+    </tr>
+    <tr class="fragment fade-in">
+      <td>
+        <img src="img/octologo.png" class="no-border">
+      </td>
+      <td>
+        @jagthedrummer <br />
+        jeremy@octolabs.com <br />
+        <a href="http://www.octolabs.com/">http://www.octolabs.com/</a>
+      </td>
+    </tr>
+  </table>
+  <aside class="notes">
+    These items are in chronological order.<br />
+    I've been drumming much more than half my life.<br />
+    Coding, just about half.<br />
+    * next fragment * <br />
+    Thanks to Jesse and Vance of okcjs for organizing Thunder Plains.
+    * next fragment * <br />
+    I'm historically bad at Twitter, but trying to get better.<br />
+    Contacting me through OctoLabs is more reliable.
+  </aside>
+</section>
+
+<section class="left">
+  <h3>My History with HDR Automation</h3>
+  <hr /><br />
+  <ul>
+    <li>Version 0 : 2007 : Bash Scripts (PfsTools)</li>
+    <li class="fragment fade-in">Version 1 : 2010 : PictoDroid  (PfsTools)</li>
+    <li class="fragment fade-in">Version 2 : 2011 : ThePhotoLabs / Phocoder  (PfsTools)</li>
+    <li class="fragment fade-in">Version 3 : 2013 : CloudHDR  (Photomatix)</li>
+  </ul>
+  <aside class="notes">
+    Version 1 - Proof of concept. Let's try to speed things up with EC2.<br />
+    Version 2 - Add some polish, learn about SOA. Gather feedback.<br />
+    Version 3 - Use the tools that most HDR photogs use. (HdrSoft)<br />
+    For this discussion we don't care about version 0.
+  </aside>
+</section>
+
+
+
+<section>
+  <h2>Version 1</h2>
+  <hr />
+  <h2>PictoDroid</h2>
+  <ul>
+    <li>User Auth/Management</li>
+    <li>File Management</li>
+    <li>Processing Engine</li>
+    <li>Job Monitoring UI</li>
+    <li>Gallery Browsing UI</li>
+    <li>Editing UI</li>
+    <li>Set Splitter UI</li>
+    <li>Uploading UI</li>
+    <li>Cluster Management</li>
+  </ul>
+</section>
+
+
+
+<section>
+  <img src="img/monolith.jpg" alt="" class="no-border"/>
+</section>
+
+<section>
+  <h2>Why Do Monoliths Form?</h2>
+  <br />
+  <ul>
+    <li>Inertia</li>
+    <li>Everything *seems* related</li>
+    <li class="fragment fade-in">It's the right way to start! (Yes, really.)</li>
+    <div class="fragment fade-in">
+      <li>Easier to on-board new devs</li>
+      <li>Easier to maintain</li>
+      <li>Easier to deploy</li>
+    </div>
+  </ul>
+  <aside class="notes">
+    Inertia - New code goes with the old code, right?<br />
+    Everything related - Hard to find dividing lines in a new system/domain.<br />
+    It's the right way to start. - Yep.<br />
+    Some things seem "easier".
+  </aside>
+</section>
+
+<section>
+  <h2>Easier or "Easier"?</h2>
+  <aside class="notes">
+    Typical project setup : Postgres, Elastic Search, Redis, ImageMagic, Sidekiq, Memcached, Misc API keys, etc...
+  </aside>
+</section>
+
+<section>
+  <h3>Signs of Discomfort</h3>
+  <br />
+  <ul>
+    <li>Bloated Gemfile</li>
+    <li>Slow server/console start up</li>
+    <li>Long test runs</li>
+    <li>Long deploys</li>
+    <li>Changes cascading into seeminly unrelated areas</li>
+    <li>Fragile/high-churn code</li>
+    <li>Hard to on-board new devs</li>
+    <li>Application specific reasons</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Version 2</h2>
+  <hr />
+  <table border="0" class="fragment fade-in">
+    <tr>
+      <td width="49%">
+        <h2>Phocoder</h2>
+        <ul>
+          <li>Processing Engine</li>
+          <li>Job Monitoring UI</li>
+          <li>Cluster Management</li>
+        </ul>
+      </td>
+      <td widht="49%" class="fragment fade-in">
+        <h2>ThePhotoLabs</h2>
+        <ul>
+          <li>User Auth/Management</li>
+          <li>File Management</li>
+          <li>Gallery Browsing UI</li>
+          <li>Editing UI</li>
+          <li>Set Splitter UI</li>
+          <li>Uploading UI</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+  <aside class="notes">
+    Phocoder - Everything about processing jobs/files.<br />
+    ThePhotoLabs - Everything else.
+  </aside>
+</section>
+
+<section>
+  <img src="img/babysteps.jpg" alt="" class="no-border"/>
+  <aside class="notes">
+    Things are starting to get slightly less jumbled.
+  </aside>
+</section>
+
+<section>
+  <h2>Lessons from Version 2</h2>
+  <hr /><br />
+  <table border="0" class="fragment fade-in">
+    <tr>
+      <td width="49%">
+        <h2>Phocoder</h2>
+        <ul>
+          <li>Very stable</li>
+          <li>Changes infrequently</li>
+          <li>Faster test runs</li>
+          <li>Faster deploys</li>
+        </ul>
+      </td>
+      <td widht="49%" class="fragment fade-in">
+        <h2>ThePhotoLabs</h2>
+        <ul>
+          <li>Less stable (than Phocoder)</li>
+          <li>Frequent change</li>
+          <li>Faster test runs</li>
+          <li>Faster deploys</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+  <div class="fragment fade-in">
+    <br /><hr />
+    <ul>
+      <li>Integration between services can be... challenging</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>CloudHDR</h2>
+  <h3>Everything in a separate project</h3>
+  <aside class="notes">
+    "I decided to dive into the deep end of the rabbit hole."
+  </aside>
+</section>
+
+<!--
+<section>
+  <h3>Projects of CloudHDR</h3>
+  <hr />
+  <table width="100%">
+    <tr><td>cloudhdr_processing</td><td>Rails JSON API &amp; Resque</td></tr>
+    <tr><td>cloudhdr_files</td><td>Rails JSON API &amp; Resque</td></tr>
+    <tr><td>cloudhdr_director</td><td>Rails &amp; Resque</td></tr>
+    <tr><td>cloudhdr_uploads</td><td>Rails</td></tr>
+    <tr><td>cloudhdr_users</td><td>Rails</td></tr>
+    <tr><td>cloudhdr_galleries</td><td>Rails &amp; Ember App</td></tr>
+    <tr><td>cloudhdr_editor</td><td>Ember App</td></tr>
+    <tr><td>cloudhdr_splitter</td><td>Ember App</td></tr>
+    <tr><td>cloudhdr_processing_monitor</td><td>Ember App</td></tr>
+  </table>
+</section>
+-->
+
+<section>
+  <img src="img/cloudhdr.jpg" alt="CloudHDR Structure"  class="no-border"/>
+</section>
+
+<section>
+  <h2>Roles of Projects</h2>
+  <ul>
+    <li>Central Services</li>
+    <li>Service Interfaces</li>
+  </ul>
+</section>
+
+<section>
+  <table border="0">
+    <tr>
+      <td width="49%">
+        <h3>Central Services</h3>
+        <ul>
+          <li>_users</li>
+          <li>_files</li>
+          <li>_processing</li>
+          <li>_director</li>
+        </ul>
+      </td>
+      <td width="49%">
+        <h3>Service Interfaces</h3>
+        <ul>
+          <li>_editor</li>
+          <li>_splitter</li>
+          <li>_processing_monitor</li>
+          <li>_uploads</li>
+          <li>_galleries</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</section>
+
+
+<section>
+  <h2>Technology of Projects</h2>
+  <ul>
+    <li>Traditional Rails</li>
+    <li>Rails JSON API</li>
+    <li>Ember</li>
+    <li class="fragment fade-in">Traditional Rails + Ember</li>
+  </ul>
+</section>
+
+<section>
+  <table border="0">
+    <tr>
+      <td width="49%">
+        <h3>Traditional Rails</h3>
+        <ul>
+          <li>_users</li>
+          <li>_uploads</li>
+          <li>_director</li>
+        </ul>
+        <br /><br />
+      </td>
+      <td width="49%">
+        <h3>Rails JSON API</h3>
+        <ul>
+          <li>_files</li>
+          <li>_processing</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3>Ember</h3>
+        <ul>
+          <li>_editor</li>
+          <li>_splitter</li>
+          <li>_processing_monitor</li>
+        </ul>
+      </td>
+      <td>
+        <h3>Traditional Rails + Ember</h3>
+        <ul>
+          <li>_galleries</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</section>
+
+
+
+
+<section>
+  <h1>Authentication for SOA</h1>
+  <div class="fragment fade-in">
+    <img src="img/LoginWithFacebook.png" alt="" class="no-border"/>
+    <!--
+    <img src="img/github-sign-in.png" alt="" class="no-border"/>
+    <img src="img/social_login_button_06.jpg" alt="" class="no-border"/>
+    -->
+  </div>
+</section>
+
+<section>
+  <img src="img/troll.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <h1>OAuth(2)</h1>
+</section>
+
+<section>
+  <h3>Protected Content in the Monolith</h3>
+  <img src="img/sign-in-only.png" alt="" class="fragment fade-in"/>
+</section>
+
+<section>
+  <h3>Protected Content in the Monolith</h3>
+  <div class="diagram">
+    browser->website: GET /protected
+    website->browser: REDIRECT /sign_in
+    Note over browser: Follow REDIRECT
+    browser->website: GET /sign_in
+    website->browser: 200 OK
+  </div>
+</section>
+
+<section>
+  <h3>Protected Content with OAuth2</h3>
+  <img src="img/github-sign-in-form.png" alt="" class="fragment fade-in"/>
+</section>
+
+<section>
+  <h3>Protected Content with OAuth2</h3>
+  <div class="diagram">
+    browser->website: GET /protected
+    website-->browser: 200 OK /sign_in
+    Note over browser: Click "Sign in w Github"
+    browser->Github: GET github.com/confirm
+    Github->browser: 200 OK
+  </div>
+</section>
+
+
+<section>
+  <h3>Protected Content with only OAuth2</h3>
+  <h3>No 'local' sign in page</h3>
+  <img src="img/codepen.png" alt="" class="no-border fragment fade-in"/>
+</section>
+
+
+<section>
+  <h3>Protected Content with only OAuth2</h3>
+  <div class="diagram">
+    browser->website: GET /protected
+    website->browser: REDIRECT github.com/confirm
+    Note over browser: Follow REDIRECT
+    browser->Github: GET github.com/confirm
+    Github->browser: 200 OK
+  </div>
+</section>
+
+
+<!--
+<section>
+  <h3>OAuth2 New Website User<sup>*</sup></h3>
+  <div class="diagram">
+    browser->website: GET /
+    website- -> GitHub: Some Redirects
+    Note over GitHub: User not connected
+    GitHub->browser: Allow Connection Form
+    browser->GitHub: POST Acceptance
+    Note over GitHub: More Redirects
+    GitHub- ->website: He's cool
+    website->browser: 200 OK /
+  </div>
+  <p>*Oversimplified</p>
+</section>
+-->
+
+
+
+
+<section>
+  <h2>Custom OAuth2 Provider</h2>
+  <br /><br />
+  <h3>cloudhdr_users</h3>
+  <br />
+  <pre class="fragment fade-in"><code>
+    # Gemfile
+    gem "devise"
+    gem "bootstrap-rails"
+  </code></pre>
+</section>
+
+<!--
+<section>
+  <img src="img/one_job_dog.jpg" alt="" />
+  <h2 class="fragment fade-in">Well, OK.  Two jobs.</h2>
+</section>
+-->
+<section>
+  <h1>Two Jobs</h1>
+  <br />
+  <h3>
+  <ol>
+    <li>UI for Sign In/Up/Out</li>
+    <br />
+    <li>OAuth2 Provider for Other Services</li>
+  </ol>
+  </h3>
+</section>
+
+<section>
+  <h3>Job 1 : UI for Sign In/Up/Out</h3>
+  <br />
+  <pre><code>
+    Feature: Sign Up
+    Scenario: Sucessful sign up
+      Given a user without an account
+      Given he has a valid invitation code
+      When he creates a new account with email "jeremy@octolabs.com"
+      Then he should see "Sign Out"
+
+    Feature: Sign In/Out
+    Scenario: Sucessful sign in then sign out
+      Given an existing user with email "jeremy@octolabs.com"
+      When he signs in with email "jeremy@octolabs.com"
+      Then he should see "Sign Out"
+      When he signs out
+      Then he should see "Sign In"
+  </code></pre>
+</section>
+
+<section>
+  <img src="img/sign_in.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <h3>Job 2 : Auth Endpoint for Other Services</h3>
+  <br />
+  <pre><code>
+    Feature: External App Sign In
+    Scenario: Sucessful sign in
+      Given an existing user with email "jeremy@octolabs.com"
+      Given a registered external app
+      When he hits the external auth endpoint
+      Then he should see "Sign In"
+      When he signs in with email "jeremy@octolabs.com"
+      Then he should be redirected back to the external app
+  </code></pre>
+</section>
+
+<section>
+  <h3>This looks familiar</h3>
+  <div class="diagram">
+    browser->_uploads: GET /
+    _uploads--> _users: Some Redirects
+    Note over _users: User not logged in
+    _users->browser: Sign In Form
+    browser->_users: POST credentials
+    Note over _users: More Redirects
+    _users-->_uploads: He's cool
+    _uploads->browser: 200 OK /
+  </div>
+</section>
+
+<section>
+  <h3>Job 2 : Auth Endpoint for Other Services</h3>
+  <br />
+  <pre><code>
+    Feature: External App Sign In
+
+    Scenario: Token refresh (user is already signed in)
+      Given an existing and signed in user with email "jeremy@octolabs.com"
+      Given a registered external app
+      When he hits the external auth endpoint
+      Then he should be redirected back to the external app
+  </code></pre>
+</section>
+
+<section>
+  <h3>Already logged in</h3>
+  <div class="diagram">
+    browser->_uploads: GET /
+    _uploads--> _users: Some Redirects
+    Note over _users: User is logged in
+    Note over _users: More Redirects
+    _users-->_uploads: He's cool
+    _uploads->browser: 200 OK /
+  </div>
+</section>
+
+<section>
+  <section>
+    <h2>That's it for cloudhdr_users</h2>
+    <h5>(down for more sequence diagrams)</h5>
+  </section>
+  
+
+  <section>
+    <h3>Request protected page</h3>
+    <br />
+    <div class="diagram">
+      browser->_uploads: GET /
+      Note right of _uploads: Internal Redirects
+      _uploads-->browser: 302 REDIRECT _users/auth...
+    </div>
+  </section>
+
+  <section>
+    <h3>Land at Sign In Page</h3>
+    <br />
+    <div class="diagram">
+      browser->_uploads: GET /
+      _uploads-->browser: 302 REDIRECT ...
+      Note left of browser: Follow redir
+      browser->_users: GET /auth?return_url=...
+      Note right of _users: Internal Redirs
+      _users->browser: 200 OK - Sign In
+
+    </div>
+  </section>
+
+  <section>
+    <h3>Sign In and Return</h3>
+    <br />
+    <div class="diagram">
+      browser->_uploads: GET /
+      _uploads-->browser: 302 REDIRECT ...
+      browser->_users: GET /auth?return_url=...
+      _users->browser: 200 OK - Sign In
+      Note left of browser: Enter credentials
+      browser->_users: POST
+      _users-->browser: REDIRECT return_url
+    </div>
+  </section>
+
+
+  <section>
+    <h3>Arrive at protected content</h3>
+    <div class="diagram">
+      browser->_uploads: Previous steps omitted
+      browser->_users: POST
+      _users-->browser: 302 REDIRECT return_url
+      Note left of browser: Follow REDIRECT
+      browser->_uploads: GET /?auth=...
+      _uploads->_users: VERIFY
+      _users->_uploads: 200 OK
+      _uploads->browser: 200 OK
+    </div>
+  </section>
+
+    
+  <section>
+    <div class="diagram">
+      browser->_uploads: GET /
+      _uploads-->browser: 302 REDIRECT
+      Note left of browser: Follow REDIRECT
+      browser->_users: GET /auth?return_url=...
+      _users-->browser: 302 REDIRECT return_url
+      Note left of browser: Follow REDIRECT
+      browser->_uploads: GET /
+      _uploads->_users: VERIFY
+      _users->_uploads: 200 OK
+      _uploads->browser: 200 OK
+    </div>
+  </section>
+</section>
+<!--
+<section>
+  <img src="img/uploads_with_login.jpg" alt="" class="no-border"/>
+</section>
+-->
+
+<!--
+<section>
+  &lt; Describe cookie process for keeping profile info updated ??? &gt;
+</section>
+
+<section>
+  &lt; Switch to using `cache_key` in the cookie? ??? &gt;
+</section>
+-->
+
+<!--
+<section>
+  <ol>
+    <li>GET http://other-app/protected</li>
+    <br />
+    <li>REDIRECT http://cloudhdr_users/auth/cloudhdr_auth/authorize</li>
+    <br />
+    <li>REDIRECT http://cloudhdr_users/users/sign_in</li>
+    <br />
+    <li>POST http://cloudhdr_users/users/sign_in</li>
+    <br />
+    <li>REDIRECT http://cloudhdr_users/auth/cloudhdr_auth/authorize</li>
+    <br />
+    <li>REDIRECT http://other-app/protected</li>
+  </ol>
+</section>
+-->
+
+<!--
+<section>
+  <img src="img/uploads_login.jpg" alt="" class="no-border"/>
+</section>
+-->
+
+
+
+
+
+<!--
+<section>
+  <ol>
+    <li>GET http://other-app/protected</li>
+    <br />
+    <li>REDIRECT http://cloudhdr_users/auth/cloudhdr_auth/authorize</li>
+    <br />
+    <li>REDIRECT http://other-app/protected</li>
+  </ol>
+</section>
+-->
+
+<section>
+  <h2>Using the Auth Endpoint from Another Service</h2>
+  <br />
+  <pre class="fragment fade-in"><code>
+    # Gemfile
+    gem "cloudhdr_auth" # OAuth2 Client
+  </code></pre>
+  <pre class="fragment fade-in"><code>
+  class ApplicationController < CloudhdrAuth::BaseController
+    protect_from_forgery
+  end
+  </code></pre>
+  <pre class="fragment fade-in"><code>
+  class SecretStuffController < ApplicationController
+    before_filter :login_required
+  end
+  </code></pre>
+</section>
+
+<section>
+  <h2>Two 'types' of sessions</h2>
+  <ul>
+    <li>cloudhdr_users : Signed In</li>
+    <li>cloudhdr_* : Having a session</li>
+  </ul>
+</section>
+
+
+
+
+<section>
+  <h2>SPA Authentication</h2>
+  <br /><br />
+  <h3>SPA to Service</h3>
+</section>
+
+<section>
+  <h3>The _editor Ember app  <br /><br />running in the browser <br /><br /> talks directly to _files</h3>
+</section>
+
+<section>
+  <h2>Initial SPA Loading Sequence</h2>
+  <hr />
+  <ol>
+    <li class="fragment fade-in">Browser loads page/JS from cloudhdr_editor</li>
+    <li class="fragment fade-in">JS function tries to pull profile json from cloudhdr_files</li>
+    <li class="fragment fade-in">If that fails, redirect to cloudhdr_files auth endpoint</li>
+    <!--<li class="fragment fade-in">cloudhdr_files will redirect to cloudhdr_users</li>-->
+    <li class="fragment fade-in">OAuth2 happens</li>
+    <li class="fragment fade-in">Browser is redirected to cloudhdr_editor</li>
+    <li class="fragment fade-in">JS function tries to pull profile json from cloudhdr_files</li>
+    <li class="fragment fade-in">If that works the Ember app loads</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Initial SPA Loading Sequence</h2>
+  <hr />
+  <pre><code>
+  var profile_url = "<%= CLOUDHDR['files'] %>/api/v1/users/me?_=";
+  profile_url += (new Date()).getTime();
+
+  $.get( profile_url )
+    .done(function(data){
+      CloudhdrEditor.currentUser = data.user;
+      CloudhdrEditor.createEmberApp();
+    })
+    .fail(function() {
+      var newLocation = "<%= CLOUDHDR['files'] %>/external_auth?return=";
+      newLocation += encodeURIComponent(document.location.toString())
+      document.location = newLocation;
+    });
+  </code></pre>
+</section>
+
+
+<section>
+<section>
+  <h3>3 possible states</h3>
+  <ol>
+    <li>Not signed in at all</li>
+    <li>Signed in to _users but no session on _files</li>
+    <li>Active session on _files</li>
+  </ol>
+  <aside class="notes">
+    <h2>Don't forget the sequence diagrams below!</h2>
+  </aside>
+</section>
+
+
+<section>
+  <h3>Active session on _files</h3>
+  <div class="diagram">
+    browser->_editor: GET /
+    _editor->browser: 200 OK
+    Note over browser: JS executes
+    browser->_files: GET /profile
+    _files->browser: 200 OK
+    Note over browser: App continues to load
+  </div>
+</section>
+
+
+<section>
+  <h3>Signed in, no session on _files</h3>
+  <div class="diagram">
+    participant browser
+    participant _editor
+    participant _files
+    participant _users
+    browser->_files: GET /profile
+    _files->browser: 401 Not Authorized
+    Note over browser: JS Redirect
+    browser->_files: GET /auth
+    _files-->_users: Some redirects
+    _users-->_files: He's cool
+    _files-->_editor: Try again
+  </div>
+</section>
+
+
+<section>
+  <h3>Not signed in</h3>
+  <div class="diagram">
+    participant browser
+    participant _editor
+    participant _files
+    participant _users
+    browser->_files: GET /profile
+    _files->browser: 401 Not Authorized
+    Note over browser: JS Redirect
+    browser->_files: GET /auth
+    _files-->_users: Some redirects
+    _users->browser: 200 OK /sign_in
+  </div>
+</section>
+</section>
+
+<!--
+<section>
+  <h2>Another Option for Auth</h2>
+  <ol>
+    <li>Present login form inside SPA</li>
+    <li>Exchange credentials for token</li>
+    <li>Send token with all requests</li>
+  </ol>
+</section>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+  <h2>Leaving <code>localhost</code></h2>
+  <br />
+  <h3 class="fragment fade-in">Cross domain issues</h3>
+</section>
+
+<section>
+  <img src="img/cors_cancelled.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <img src="img/cors_problem_terminal.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <img src="img/cors_problem2.png" alt="" class="no-border"/>
+  <aside class="notes">
+    Luckily there is a tool that we can use to fix this problem.
+  </aside>
+</section>
+
+<section>
+  <img src="img/coors.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <img src="img/coors_nope.png" alt="" class="no-border" width="20%"/>
+  <br />
+  <h1>CORS</h1>
+  <br />
+  <h3>Cross Origin Resource Sharing</h3>
+
+</section>
+  
+
+
+<section>
+  <h3>Allows a site to tell browsers <br /><br />
+    that it is willing to <br /><br />
+    provide content/services to other sites</h3>
+</section>
+
+
+<section>
+  <pre><code>
+    # Gemfile
+    gem "rack-cors", :require => "rack/cors"
+  </code></pre>
+  <pre class="fragment fade-in"><code>
+    # config/application.rb
+    config.middleware.use Rack::Cors do
+      allow do
+        origins(/http:\/\/localhost:\d*/,
+                /https:\/\/cloudhdr-\w*-octolabs\.fwd\.wf/,
+                /http:\/\/[\w-]*\.cloudhdr\.com/
+               )
+        resource '/api/v1/*', 
+                  :headers => :any, 
+                  :methods => [:get, :post, :put, :delete, :options]
+      end
+    end
+  </code></pre>
+</section>
+
+<section>
+  <img src="img/cors_headers.png" alt="" class="no-border"/>
+</section>
+
+
+<section>
+  <h2>Public/Open API</h2>
+  <br />
+  <pre><code>
+    # config/application.rb
+    config.middleware.use Rack::Cors do
+      allow do
+        origins('*')
+        resource '/api/public/v1/*',
+          :headers => :any,
+          :methods => [:get]
+      end
+    end
+  </code></pre>
+</section>
+
+<section>
+  <h2>Do NOT Do This!</h2>
+  <br />
+  <pre><code>
+    # config/application.rb
+    config.middleware.use Rack::Cors do
+      allow do
+        origins('*')
+        resource '*',
+          :headers => :any,
+          :methods => [:get, :post, :put, :delete, :options]
+      end
+    end
+  </code></pre>
+  <br />
+  <h3>Learn about Cross Site Scripting!</h3>
+</section>
+
+<!--
+<section>
+  Slides about XSS?
+</section>
+-->
+
+<section>
+  <h2>The AJAX Cookie Problem</h2>
+  <img src="img/cookie.jpg" alt="" />
+</section>
+
+<section>
+  <img src="img/cookie_error.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <img src="img/json_view.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <h1>By default jQuery does not send cookies with AJAX requests</h1>
+</section>
+
+<section>
+  <h3><code>withCredentials</code> to the rescue!</h3>
+  <br />
+  <pre class="fragment fade-in"><code>
+  // Make sure that cookies get sent with AJAX requests
+  $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
+    options.xhrFields = { withCredentials : true };
+  });
+  </code></pre>
+</section>
+
+<section>
+  <img src="img/get_user.png" alt="" class="no-border"/>
+</section>
+
+<section>
+  <img src="img/success.png" alt="" class="no-border"/>
+</section>
+
+
+<!--
+<section>
+  Service to Service
+</section>
+
+<section>
+  ApiKey Model in Provider
+  <br />
+  Consumer sends key in request
+</section>
+-->
+
+<section>
+  <h2>Maintenance Patterns</h2>
+  <br />
+  <h3 class="fragment fade-in">Central services are stable</h3>
+  <br />
+  <h3 class="fragment fade-in">Service interfaces are volatile</h3>
+</section>
+
+
+
+<section>
+    <h2>Thanks For Watching!</h2>
+    <div>
+        <br>
+    </div>
+    <div>Jeremy Green</div>
+    <div>
+      @jagthedrummer
+    </div>
+    <div>jeremy@octolabs.com</div>
+    <div>
+        <br>
+    </div>
+    <div>
+        <img src="img/octologo.png" class="no-border">
+        <br>
+    </div>
+    <div>
+        <br>
+    </div>
+    <div>
+        <a href="http://www.octolabs.com/">http://www.octolabs.com/</a>
+        <br>
+    </div>
+</section>
+
+</div>
+</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+    <script src="lib/js/jquery.min.js"></script>
+    <script src="lib/js/raphael-min.js"></script>
+    <script src="lib/js/underscore-min.js"></script>
+    <script src="lib/js/sequence-diagram-min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          //{ src: 'lib/js/raphael-min.js', async: true, condition: function() { return !!document.body.classList; } },
+          //{ src: 'lib/js/underscore-min.js', async: true, condition: function() { return !!document.body.classList; } },
+          //{ src: 'lib/js/sequence-diagram-min.js', async: true, condition: function() { return !!document.body.classList; } },
+
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+    <script>
+      $(".diagram").sequenceDiagram({theme: 'hand'});
+    </script>
+
+	</body>
+</html>
