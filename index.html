@@ -88,6 +88,7 @@
   <img src="img/hdr/hd_c_4a18eb0a-0b94-11e3-a7aa-22000a950cd1__31c2ad183cb581b57b74e778bf3fbd0e.jpg" alt="" />
 </section>
 
+<!--
 <section>
   <h2>Why HDR?</h2>
   <hr />
@@ -101,6 +102,7 @@
     Now we can get back to : What is HDR?
   </aside>
 </section>
+-->
 
 <section>
   <div>
@@ -118,16 +120,16 @@
   </div>
 </section>
 
+<!--
 <section>
   <img src="img/hdr_step1_2.png" alt="" class="no-border"/>
   &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
   <img src="img/hdr_step2_2.png" alt="" class="no-border fragment fade-in"/>
   <img src="img/hdr/composite.png" alt="" class="no-border fragment fade-in"/>
 </section>
+-->
 
 <section>
-  
-
   <table border="0" class="vert-middle" width="100%">
     <tr>
       <td colspan="2">
@@ -549,104 +551,99 @@
   <h2 class="fragment fade-in">Well, OK.  Two jobs.</h2>
 </section>
 -->
-<section>
-  <h1>Two Jobs</h1>
-  <br />
-  <h3>
-  <ol>
-    <li>UI for Sign In/Up/Out</li>
-    <br />
-    <li>OAuth2 Provider for Other Services</li>
-  </ol>
-  </h3>
-</section>
-
-<section>
-  <h3>Job 1 : UI for Sign In/Up/Out</h3>
-  <br />
-  <pre><code>
-    Feature: Sign Up
-    Scenario: Sucessful sign up
-      Given a user without an account
-      Given he has a valid invitation code
-      When he creates a new account with email "jeremy@octolabs.com"
-      Then he should see "Sign Out"
-
-    Feature: Sign In/Out
-    Scenario: Sucessful sign in then sign out
-      Given an existing user with email "jeremy@octolabs.com"
-      When he signs in with email "jeremy@octolabs.com"
-      Then he should see "Sign Out"
-      When he signs out
-      Then he should see "Sign In"
-  </code></pre>
-</section>
-
-<section>
-  <img src="img/sign_in.png" alt="" class="no-border"/>
-</section>
-
-<section>
-  <h3>Job 2 : Auth Endpoint for Other Services</h3>
-  <br />
-  <pre><code>
-    Feature: External App Sign In
-    Scenario: Sucessful sign in
-      Given an existing user with email "jeremy@octolabs.com"
-      Given a registered external app
-      When he hits the external auth endpoint
-      Then he should see "Sign In"
-      When he signs in with email "jeremy@octolabs.com"
-      Then he should be redirected back to the external app
-  </code></pre>
-</section>
-
-<section>
-  <h3>This looks familiar</h3>
-  <div class="diagram">
-    browser->_uploads: GET /
-    _uploads--> _users: Some Redirects
-    Note over _users: User not logged in
-    _users->browser: Sign In Form
-    browser->_users: POST credentials
-    Note over _users: More Redirects
-    _users-->_uploads: He's cool
-    _uploads->browser: 200 OK /
-  </div>
-</section>
-
-<section>
-  <h3>Job 2 : Auth Endpoint for Other Services</h3>
-  <br />
-  <pre><code>
-    Feature: External App Sign In
-
-    Scenario: Token refresh (user is already signed in)
-      Given an existing and signed in user with email "jeremy@octolabs.com"
-      Given a registered external app
-      When he hits the external auth endpoint
-      Then he should be redirected back to the external app
-  </code></pre>
-</section>
-
-<section>
-  <h3>Already logged in</h3>
-  <div class="diagram">
-    browser->_uploads: GET /
-    _uploads--> _users: Some Redirects
-    Note over _users: User is logged in
-    Note over _users: More Redirects
-    _users-->_uploads: He's cool
-    _uploads->browser: 200 OK /
-  </div>
-</section>
 
 <section>
   <section>
-    <h2>That's it for cloudhdr_users</h2>
-    <h5>(down for more sequence diagrams)</h5>
+    <h1>Two Jobs</h1>
+    <br />
+    <h3>
+    <ol>
+      <li>UI for Sign In/Up/Out</li>
+      <br />
+      <li>OAuth2 Provider for Other Services</li>
+    </ol>
+    </h3>
   </section>
-  
+
+  <section>
+    <h3>Job 1 : UI for Sign In/Up/Out</h3>
+    <br />
+    <pre><code>
+      Feature: Sign Up
+      Scenario: Sucessful sign up
+        Given a user without an account
+        Given he has a valid invitation code
+        When he creates a new account with email "jeremy@octolabs.com"
+        Then he should see "Sign Out"
+
+      Feature: Sign In/Out
+      Scenario: Sucessful sign in then sign out
+        Given an existing user with email "jeremy@octolabs.com"
+        When he signs in with email "jeremy@octolabs.com"
+        Then he should see "Sign Out"
+        When he signs out
+        Then he should see "Sign In"
+    </code></pre>
+  </section>
+
+  <section>
+    <img src="img/sign_in.png" alt="" class="no-border"/>
+  </section>
+
+  <section>
+    <h3>Job 2 : Auth Endpoint for Other Services</h3>
+    <br />
+    <pre><code>
+      Feature: External App Sign In
+      Scenario: Sucessful sign in
+        Given an existing user with email "jeremy@octolabs.com"
+        Given a registered external app
+        When he hits the external auth endpoint
+        Then he should see "Sign In"
+        When he signs in with email "jeremy@octolabs.com"
+        Then he should be redirected back to the external app
+    </code></pre>
+  </section>
+
+  <section>
+    <h3>This looks familiar</h3>
+    <div class="diagram">
+      browser->_uploads: GET /
+      _uploads--> _users: Some Redirects
+      Note over _users: User not logged in
+      _users->browser: Sign In Form
+      browser->_users: POST credentials
+      Note over _users: More Redirects
+      _users-->_uploads: He's cool
+      _uploads->browser: 200 OK /
+    </div>
+  </section>
+
+  <section>
+    <h3>Job 2 : Auth Endpoint for Other Services</h3>
+    <br />
+    <pre><code>
+      Feature: External App Sign In
+
+      Scenario: Token refresh (user is already signed in)
+        Given an existing and signed in user with email "jeremy@octolabs.com"
+        Given a registered external app
+        When he hits the external auth endpoint
+        Then he should be redirected back to the external app
+    </code></pre>
+  </section>
+
+  <section>
+    <h3>Already logged in</h3>
+    <div class="diagram">
+      browser->_uploads: GET /
+      _uploads--> _users: Some Redirects
+      Note over _users: User is logged in
+      Note over _users: More Redirects
+      _users-->_uploads: He's cool
+      _uploads->browser: 200 OK /
+    </div>
+  </section>
 
   <section>
     <h3>Request protected page</h3>
